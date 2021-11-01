@@ -8,7 +8,9 @@ In each chapter we are going to solve a different problem, with increasing diffi
 
 Ultimately, the most complex RL problems involve a mixture of reinforcement learning algorithms, optimizations and Deep Learning techniques.
 
-You do not need to know deep learning in depth (x) to follow along this course. I will provide with sufficient context to get you familiar with DL philosophy and how it becomes a crucial ingredient in modern reinforcement learning.
+You do not need to know deep learning to follow along this course.
+I will give you enough context to get you familiar with DL philosophy and understand
+how it becomes a crucial ingredient in modern reinforcement learning.
 
 
 ## Contents
@@ -17,29 +19,23 @@ You do not need to know deep learning in depth (x) to follow along this course. 
 
     👉 Problem formulation
     👉 What is a policy?
-    👉 What is this a value function? 
+    👉 What is a value function? 
     👉 Taxonomy of RL algorithms 
 
-#### [01 Taxi driving]()
-
-    👉 Why do we start with this problem?
-    👉 Q-learning
-    👉 Exploration vs exploitation
-
-#### [02 Tic Tac Toe]()
+#### [01 Tic Tac Toe]() 🏆
 
     👉 Create a custom gym environment [Bonus] 
     👉 Perfect player strategy
-    👉 Q-learning from a good teacher   
+    👉 Q-learning from a master
+    👉 Self-playing all the way up
     
-#### [03 Snake]()
+#### [02 Snake]() 🏆🏆
 
     👉 Going deep (learning).
 
-#### [04 Tetris]()
+#### [03 Pacman]() 🏆🏆🏆
 
 
-#### [05 Pacman]() ＼⍩⃝／
     
         
 
