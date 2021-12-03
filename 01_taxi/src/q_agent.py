@@ -1,4 +1,5 @@
 import numpy as np
+from pdb import set_trace as stop
 
 class QAgent:
 
@@ -14,6 +15,7 @@ class QAgent:
 
     def get_action(self, state):
         """"""
+        # stop()
         return np.argmax(self.q_table[state])
 
     def update_parameters(self, state, action, reward, next_state):

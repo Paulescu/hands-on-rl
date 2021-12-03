@@ -34,4 +34,8 @@ Jupyter notebooks:
 ## 3. Results
 
 
+## Record agent in action
+
+- https://hub.packtpub.com/openai-gym-environments-wrappers-and-monitors-tutorial/
+
 
