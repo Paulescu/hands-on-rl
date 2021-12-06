@@ -46,6 +46,10 @@ how it becomes a crucial ingredient in modern reinforcement learning.
 - What’s next? ❤️      
 
 ## 01. Q-Learning to drive a taxi 🏆
+
+👉 [Read in datamachines](http://datamachines.xyz/2021/12/06/hands-on-reinforcement-learning-course-part-2/)
+👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-2-1b0828a1046b)
+
 - The taxi driving problem 🚕 
 - Environment, actions, states, rewards 
 - Random agent baseline 🤖🍷 
