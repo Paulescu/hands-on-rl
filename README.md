@@ -1,11 +1,10 @@
 # Hands-on Reinforcement Learning (RL)
 
-#### Contents
+> *Out of intense complexities, intense simplicities emerge*
+>
+> --*Winston Churchill*
 
-0. [Introduction to Reinforcement Learning](#00-intro-to-reinforcement-learning)
-1. [Q-learning to drive a taxi](#01-problem-q-learning-to-drive-a-taxi-)
-
-## Welcome to my hands-on course on Reinforcement Learning ❤️ 
+## Welcome to my hands-on course on Reinforcement Learning ❤️
 
 Welcome to my step by step hands-on-course that will take you from basic reinforcement learning to cutting-edge deep RL.
 
@@ -23,17 +22,19 @@ You do not need to know deep learning (DL) to follow along this course.
 
 I will give you enough context to get you familiar with DL philosophy and understand
 how it becomes a crucial ingredient in modern reinforcement learning.
+----
+#### Contents
 
-> *Out of intense complexities, intense simplicities emerge*
->
-> --*Winston Churchill*
+0. [Introduction to Reinforcement Learning](#00-intro-to-reinforcement-learning)
+1. [Q-learning to drive a taxi 🏆](#01-problem-q-learning-to-drive-a-taxi-)
+----
 
-## Contents
 
-### 00 Intro to reinforcement learning
+## 00 Intro to reinforcement learning
 
-Check out the introduction to the course on my [blog]((http://datamachines.xyz/2021/11/17/hands-on-reinforcement-learning-course-part-1/)) 
-or in my featured post in [Towards Data Science]().
+👉 [Read in datamachines]((http://datamachines.xyz/2021/11/17/hands-on-reinforcement-learning-course-part-1/)) 
+👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-1-269b50e39d08)
+
 
 ```
 Contents:
@@ -45,16 +46,15 @@ Contents:
 👉 Recap and homework.         
 👉 What's next?       
 ```
-### 01 Problem: Q-Learning to drive a taxi 🏆
-
-[Blog post]() and [code]()
+## 01 Problem: Q-Learning to drive a taxi 🏆
 
 ```
 Contents:
 
 👉 Random agent baseline       
 👉 Q-agent      
-👉 Code refactoring       
-👉 Recap and homework.
+👉 Hyper-parameter tuning.       
+👉 Recap
+👉 Homework.
 👉 What's next?
 ```
