@@ -1,13 +1,11 @@
 # Q-learning to drive a taxi 🚕
-
-This is part 1 of my course Hands-on reinforcement learning.
-
-In this part we use Q-learning to teach an agent to drive a taxi.
-
 > *You talkin' to me?*
 >
 > Robert de Niro (Taxi driver)
 
+This is part 1 of my course Hands-on reinforcement learning.
+
+In this part we use Q-learning to teach an agent to drive a taxi.
 
 ### Quick setup
 
