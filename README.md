@@ -1,4 +1,4 @@
-# Hands-on Reinforcement Learning (RL)
+# Hands-on Reinforcement Learning course
 
 > *Out of intense complexities, intense simplicities emerge*
 >
@@ -22,39 +22,35 @@ You do not need to know deep learning (DL) to follow along this course.
 
 I will give you enough context to get you familiar with DL philosophy and understand
 how it becomes a crucial ingredient in modern reinforcement learning.
+
 ----
+
 #### Contents
 
-0. [Introduction to Reinforcement Learning](#00-intro-to-reinforcement-learning)
-1. [Q-learning to drive a taxi 🏆](#01-problem-q-learning-to-drive-a-taxi-)
+0. [Introduction to Reinforcement Learning](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-1-269b50e39d08)
+1. [Q-learning to drive a taxi 🏆](01_taxi/README.md)
 ----
 
 
-## 00 Intro to reinforcement learning
+## 00. Intro to reinforcement learning
 
-👉 [Read in datamachines]((http://datamachines.xyz/2021/11/17/hands-on-reinforcement-learning-course-part-1/)) 
+👉 [Read in datamachines](http://datamachines.xyz/2021/11/17/hands-on-reinforcement-learning-course-part-1/) 
 👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-1-269b50e39d08)
 
+- What is a Reinforcement Learning problem? 🤔
+- Policies 👮🏽 and value functions.
+- How to generate the training data? 📊
+- Python boilerplate code.🐍
+- Recap ✨
+- Homework 📚
+- What’s next? ❤️      
 
-```
-Contents:
-
-👉 What is a Reinforcement Learning problem? Examples.       
-👉 Policies and value functions      
-👉 How to generate the training data?      
-👉 Python boilerplate code.     
-👉 Recap and homework.         
-👉 What's next?       
-```
-## 01 Problem: Q-Learning to drive a taxi 🏆
-
-```
-Contents:
-
-👉 Random agent baseline       
-👉 Q-agent      
-👉 Hyper-parameter tuning.       
-👉 Recap
-👉 Homework.
-👉 What's next?
-```
+## 01. Q-Learning to drive a taxi 🏆
+- The taxi driving problem 🚕 
+- Environment, actions, states, rewards 
+- Random agent baseline 🤖🍷 
+- Q-learning agent 🤖🧠 
+- Hyper-parameter tuning 🎛️ 
+- Recap ✨ 
+- Homework 📚 
+- What's next? ❤️

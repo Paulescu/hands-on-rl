@@ -47,8 +47,6 @@ The easiest way to get the code working in your machine is by using [Poetry](htt
 4. [Hyper-parameter tuning](notebooks/03_q_agent_hyperparameters_analysis.ipynb)
 5. [Homework](notebooks/04_homework.ipynb)
 
-### References
-
 
 
 
