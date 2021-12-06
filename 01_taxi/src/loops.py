@@ -135,7 +135,7 @@ def train_many_runs(
 
         agent.reset()
 
-        timesteps[i, :], penalties[i, :] = train(
+        _, timesteps[i, :], penalties[i, :] = train(
             agent, env, n_episodes, epsilon
         )
     timesteps = np.mean(timesteps, axis=0).tolist()
