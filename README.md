@@ -6,6 +6,8 @@
 
 ## Welcome to my hands-on course on Reinforcement Learning ❤️
 
+![](images/tweet.svg)
+
 Welcome to my step by step hands-on-course that will take you from basic reinforcement learning to cutting-edge deep RL.
 
 We will start with a short intro of what RL is, what is it used for, and how does the landscape of current
