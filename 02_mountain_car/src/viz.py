@@ -1,12 +1,55 @@
 from time import sleep
 from argparse import ArgumentParser
+from pdb import set_trace as stop
 
+import pandas as pd
 import gym
 
 from src.config import SAVED_AGENTS_DIR
 
+import numpy as np
 
-def viz(agent, env, sleep_sec: float = 0.1):
+
+def plot_policy(agent, positions: np.arange, velocities: np.arange, figsize = None):
+    """"""
+    data = []
+    int2str = {
+        0: 'Accelerate Left',
+        1: 'Do nothing',
+        2: 'Accelerate Right'
+    }
+    for position in positions:
+        for velocity in velocities:
+
+            state = np.array([position, velocity])
+            action = int2str[agent.get_action(state)]
+
+            data.append({
+                'position': position,
+                'velocity': velocity,
+                'action': action,
+            })
+
+    data = pd.DataFrame(data)
+
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+
+    if figsize:
+        plt.figure(figsize=figsize)
+
+    colors = {
+        'Accelerate Left': 'blue',
+        'Do nothing': 'grey',
+        'Accelerate Right': 'orange'
+    }
+    sns.scatterplot(x="position", y="velocity", hue="action", data=data,
+                    palette=colors)
+
+    plt.show()
+    return data
+
+def show_video(agent, env, sleep_sec: float = 0.1):
 
     state = env.reset()
     done = False
@@ -22,8 +65,7 @@ if __name__ == '__main__':
 
     parser = ArgumentParser()
     parser.add_argument('--agent_file', type=str, required=True)
-    parser.add_argument('--initial_position', type=float, required=False)
-    parser.add_argument('--initial_speed', type=float, required=False)
+    parser.add_argument('--sleep_sec', type=float, required=False, default=0.1)
     args = parser.parse_args()
 
     from src.base_agent import BaseAgent
@@ -33,7 +75,7 @@ if __name__ == '__main__':
     env = gym.make('MountainCar-v0')
     env._max_episode_steps = 1000
 
-    viz(agent, env)
+    show_video(agent, env, sleep_sec=args.sleep_sec)
 
 
 
