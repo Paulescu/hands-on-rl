@@ -1,13 +1,15 @@
-# SARSA to get the mountain car out of the whole 🚃
+# SARSA to beat gravity 🚃
+👉 [Read in datamachines](http://datamachines.xyz/2021/12/17/hands-on-reinforcement-learning-course-part-3-sarsa/)
+👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-3-5db40e7938d4)
 
-> *Be like a train; go in the rain, go in the sun, go in the storm, go in the dark tunnels! Be like a train; concentrate on your road and go with no hesitation!*
->
-> Mehmet Murat Ildan
 
 This is part 2 of my course Hands-on reinforcement learning.
 
 In this part we use SARSA to help a poor car win the battle against gravity!
 
+> *Be like a train; go in the rain, go in the sun, go in the storm, go in the dark tunnels! Be like a train; concentrate on your road and go with no hesitation!*
+>
+> --_Mehmet Murat Ildan_
 
 ### Quick setup
 

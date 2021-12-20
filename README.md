@@ -1,12 +1,15 @@
-# Hands-on Reinforcement Learning course
+<div align="center">
+<h1>The Hands-on Reinforcement Learning course 🚀 </h1>
+<h2>From zero to HERO 🦸🏻‍🦸🏽</h2>
+</div>
+
 
 > *Out of intense complexities, intense simplicities emerge*
 >
 > --*Winston Churchill*
 
-## Welcome to my hands-on course on Reinforcement Learning ❤️
 
-![](images/tweet.svg)
+## Welcome ❤️
 
 Welcome to my step by step hands-on-course that will take you from basic reinforcement learning to cutting-edge deep RL.
 
@@ -25,13 +28,13 @@ You do not need to know deep learning (DL) to follow along this course.
 I will give you enough context to get you familiar with DL philosophy and understand
 how it becomes a crucial ingredient in modern reinforcement learning.
 
-----
+## Contents
 
-#### Contents
-
-0. [Introduction to Reinforcement Learning](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-1-269b50e39d08)
+0. Introduction to Reinforcement Learning
 1. [Q-learning to drive a taxi 🏆](01_taxi/README.md)
-----
+2. [SARSA to beat gravity 🏆](02_mountain_car/README.md)
+
+-----
 
 
 ## 00. Intro to reinforcement learning
@@ -60,3 +63,17 @@ how it becomes a crucial ingredient in modern reinforcement learning.
 - Recap ✨ 
 - Homework 📚 
 - What's next? ❤️
+
+## 02. SARSA to beat gravity 🏆
+
+👉 [Read in datamachines](http://datamachines.xyz/2021/12/17/hands-on-reinforcement-learning-course-part-3-sarsa/)
+👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-3-5db40e7938d4)
+
+- The Mountain car problem 🚃
+- Environment, actions, states, rewards
+- Random agent baseline 🚃🍷
+- SARSA agent 🚃🧠
+- Take a pause and breath ⏸🧘
+- Recap ✨
+- Homework 📚
+- What’s next? ❤️
