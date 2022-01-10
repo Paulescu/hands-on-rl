@@ -1,0 +1,15 @@
+CartPole-v1:
+  learning_rate: 2.3e-3
+  discount_factor: 0.99
+  batch_size: 64
+  memory_size: 100000
+  freq_steps_train: 256
+  freq_steps_update_target: 10
+  n_steps_warm_up_memory: 1000
+  max_grad_norm: 10
+  n_gradient_steps: 128
+  steps_epsilon_decay: 6000
+  epsilon_start: 0.9
+  epsilon_end: 0.05
+  nn_hidden_layers: [256, 256]
+  normalize_state: True
