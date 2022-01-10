@@ -161,7 +161,9 @@ if __name__ == '__main__':
     mlflow.set_experiment(args.experiment_name)
 
     # set Optuna study
-    study = optuna.create_study(study_name=args.experiment_name, direction='maximize')
+    study = optuna.create_study(study_name=args.experiment_name,
+                                direction='maximize',
+                                load_if_exists=True)
 
     # Wrap the objective inside a lambda and call objective inside it
     # Nice trick taken from https://www.kaggle.com/general/261870
