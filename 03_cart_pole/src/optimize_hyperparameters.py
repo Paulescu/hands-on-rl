@@ -9,7 +9,7 @@ import mlflow
 
 from src.q_agent import QAgent
 from src.utils import get_agent_id
-from src.config import TENSORBOARD_LOG_DIR, SAVED_AGENTS_DIR, ML_FLOW_EXPERIMENTS
+from src.config import TENSORBOARD_LOG_DIR, SAVED_AGENTS_DIR, OPTUNA_DB
 from src.utils import set_seed
 from src.loops import train, evaluate
 
@@ -153,8 +153,8 @@ if __name__ == '__main__':
     parser.add_argument('--trials', type=int, required=True)
     parser.add_argument('--episodes', type=int, required=True)
     parser.add_argument('--force_linear_model', dest='force_linear_model', action='store_true')
-    parser.add_argument('--experiment_name', type=str, required=True)
     parser.set_defaults(force_linear_model=False)
+    parser.add_argument('--experiment_name', type=str, required=True)
     args = parser.parse_args()
 
     # set Mlflow experiment name
@@ -163,7 +163,8 @@ if __name__ == '__main__':
     # set Optuna study
     study = optuna.create_study(study_name=args.experiment_name,
                                 direction='maximize',
-                                load_if_exists=True)
+                                load_if_exists=True,
+                                storage=f'sqlite:///{OPTUNA_DB}')
 
     # Wrap the objective inside a lambda and call objective inside it
     # Nice trick taken from https://www.kaggle.com/general/261870
