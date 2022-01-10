@@ -1,4 +1,5 @@
 from typing import Dict
+from argparse import ArgumentParser
 from pdb import set_trace as stop
 
 import optuna
@@ -13,14 +14,12 @@ from src.utils import set_seed
 from src.loops import train, evaluate
 
 
-N_EPISODES_TO_TRAIN = 2000
 N_EPISODES_TO_EVALUATE = 1000 # 1000
 
 
 def sample_hyper_parameters(
     trial: optuna.trial.Trial,
-    use_normalized_state: bool = False,
-    use_linear_model: bool = False,
+    force_linear_model: bool = False,
 ) -> Dict:
 
     learning_rate = trial.suggest_loguniform("learning_rate", 1e-5, 1)
@@ -43,7 +42,7 @@ def sample_hyper_parameters(
     n_gradient_steps = trial.suggest_categorical("n_gradient_steps", [1, 4, 16])
 
     # model architecture to approximate q values
-    if use_linear_model:
+    if force_linear_model:
         # linear model
         nn_hidden_layers = None
     else:
@@ -56,11 +55,7 @@ def sample_hyper_parameters(
     max_grad_norm = trial.suggest_categorical("max_grad_norm", [1, 10])
 
     # should we scale the inputs before feeding them to the model?
-    # In general you SHOULD. We leave the parameter here for educational purposes.
-    if use_normalized_state:
-        normalize_state = True
-    else:
-        normalize_state = trial.suggest_categorical('normalize_state', [True, False])
+    normalize_state = trial.suggest_categorical('normalize_state', [True, False])
 
     # start value for the exploration rate
     epsilon_start = trial.suggest_categorical("epsilon_start", [0.9])
@@ -70,7 +65,7 @@ def sample_hyper_parameters(
 
     # for how many steps do we decrease epsilon from its starting value to
     # its final value `epsilon_end`
-    steps_epsilon_decay = trial.suggest_categorical("steps_epsilon_decay", [1e3, 1e4, 1e5])
+    steps_epsilon_decay = trial.suggest_categorical("steps_epsilon_decay", [int(1e3), int(1e4), int(1e5)])
 
     seed = trial.suggest_int('seed', 0, 2 ** 32 - 1)
 
@@ -95,8 +90,8 @@ def sample_hyper_parameters(
 
 def objective(
     trial: optuna.trial.Trial,
-    use_normalized_state: bool = False,
-    use_linear_model: bool = False,
+    force_linear_model: bool = False,
+    n_episodes_to_train: int = 2000,
 ):
     env_name = 'CartPole-v1'
     env = gym.make('CartPole-v1')
@@ -107,9 +102,7 @@ def objective(
         mlflow.log_param('agent_id', agent_id)
 
         # hyper-parameters
-        args = sample_hyper_parameters(trial,
-                                       use_normalized_state=use_normalized_state,
-                                       use_linear_model=use_linear_model)
+        args = sample_hyper_parameters(trial, force_linear_model=force_linear_model)
         mlflow.log_params(trial.params)
 
         # create agent object
@@ -135,10 +128,10 @@ def objective(
         # fix seed before training
         set_seed(args['seed'])
         train(agent, env,
-              n_episodes=4,
+              n_episodes=n_episodes_to_train,
               log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id,
               n_episodes_evaluate_agent=100,
-              freq_episodes_evaluate_agent=N_EPISODES_TO_TRAIN)
+              freq_episodes_evaluate_agent=n_episodes_to_train+1)
 
         agent.save_to_disk(SAVED_AGENTS_DIR / env_name / agent_id)
 
@@ -156,23 +149,23 @@ def objective(
 
 if __name__ == '__main__':
 
-    use_normalized_state = True
-    use_linear_model = False
+    parser = ArgumentParser()
+    parser.add_argument('--trials', type=int, required=True)
+    parser.add_argument('--episodes', type=int, required=True)
+    parser.add_argument('--force_linear_model', dest='force_linear_model', action='store_true')
+    parser.add_argument('--experiment_name', type=str, required=True)
+    parser.set_defaults(force_linear_model=False)
+    args = parser.parse_args()
 
-    mlflow.set_experiment('optimal_hyperparameters')
+    # set Mlflow experiment name
+    mlflow.set_experiment(args.experiment_name)
+
+    # set Optuna study
+    study = optuna.create_study(study_name=args.experiment_name, direction='maximize')
 
     # Wrap the objective inside a lambda and call objective inside it
     # Nice trick taken from https://www.kaggle.com/general/261870
-    func = lambda trial: objective(trial,
-                                   use_normalized_state=use_normalized_state,
-                                   use_linear_model=use_linear_model)
+    func = lambda trial: objective(trial, force_linear_model=args.force_linear_model)
 
-    # Pass func to Optuna studies
-    study = optuna.create_study(direction='maximize')
-    study.optimize(func, n_trials=100)
-
-
-    best_params = study.best_params
-    found_x = best_params["x"]
-
-    print(study.best_params)
+    # run Optuna
+    study.optimize(func, n_trials=args.trials)
