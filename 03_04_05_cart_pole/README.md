@@ -1,11 +1,6 @@
 # Function approximation to keep the balance 💃
-👉 [Read in datamachines]()
-👉 [Read in Towards Data Science]()
 
-
-This is part 3 of my course Hands-on reinforcement learning.
-
-In this part we enter new territory.
+Today we enter new territory...
 
 A territory where function approximation (aka supervised machine learning)
 meets good old Reinforcement Learning.
@@ -14,12 +9,12 @@ meets good old Reinforcement Learning.
 >
 > --_Dmitri Mendeleev_
 
+There is a lot to diggest here, so I decided to split this lecture in 3 parts:
+
 ### Table of Contents
 
 * [Setup](#setup)
 * [Notebooks](#notebooks)
-* [Command line interface](#model-inference-as-a-rest-api)
-* [Results](#results)
 
 
 ### Setup
@@ -58,30 +53,5 @@ All `python` commands are executed froms this virtual environment created by poe
 
 1. [Explore the environment](notebooks/00_environment.ipynb)
 2. [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
-3. [Linear Q agent](notebooks/02_linear_q_agent.ipynb)
-4. [Deep Q agent](notebooks/03_deep_q_agent.ipynb)
-5. [Hyper-parameter optimization]()
-6. [Homework](notebooks/04_homework.ipynb)
-
-
-## TODOs
-
-CartPole
-- [x] NN to solve the problem perfectly.
-  - [x] Fix bug global_steps
-  - [x] Save hparams
-  - [x] Save preprocessor
-  - [x] Train agent with preprocessing of state.
-  - [x] agent.load_from_disk()
-
-- [ ] Integrate Optuna to find best hyper-parameters for linear agent.
-- [x] Integrate Optuna to find best hyper-parameters for deep agent.
-
-- [ ] NN model notebook where we train and evaluate the agent  
-- [ ] Generate video from trained agent.
-
-- [ ] Linear model notebook where we train and evaluate the agent
-- [ ] Generate video from trained agent.
-
-## References
-- [Deep Learning that matters](https://arxiv.org/pdf/1709.06560.pdf)
+3. [Linear Q agent with bad hyper-parameters](notebooks/02_linear_q_agent_bad_hyperparameters.ipynb)
+4. [Linear Q agent with good hyper-parameters](notebooks/02_linear_q_agent_good_hyperparameters.ipynb)
