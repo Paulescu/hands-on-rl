@@ -1,4 +1,6 @@
-# Function approximation to keep the balance 💃
+# Linear Q learning to keep the balance 💃
+
+This is part 3 of my course Hands-on reinforcement learning.
 
 Today we enter new territory...
 
@@ -54,4 +56,5 @@ All `python` commands are executed froms this virtual environment created by poe
 1. [Explore the environment](notebooks/00_environment.ipynb)
 2. [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
 3. [Linear Q agent with bad hyper-parameters](notebooks/02_linear_q_agent_bad_hyperparameters.ipynb)
-4. [Linear Q agent with good hyper-parameters](notebooks/02_linear_q_agent_good_hyperparameters.ipynb)
+4. [Linear Q agent with good hyper-parameters](notebooks/03_linear_q_agent_good_hyperparameters.ipynb)
+5. [Homework](notebooks/04_homework.ipynb)
