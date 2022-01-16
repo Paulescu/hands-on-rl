@@ -53,7 +53,7 @@ class QAgent:
         n_steps_warm_up_memory: int = 1000,
         freq_steps_train: int = 16,
         n_gradient_steps: int = 8,
-        nn_hidden_layers: List[int] = [256, 256],
+        nn_hidden_layers: List[int] = None,
         max_grad_norm: int = 10,
         normalize_state: bool = False,
         epsilon_start: float = 1.0,
@@ -61,6 +61,34 @@ class QAgent:
         steps_epsilon_decay: float = 50000,
         log_dir: str = None,
     ):
+        """
+        :param env:
+        :param learning_rate: size of the updates in the SGD/Adam formula
+        :param discount_factor: discount factor for future rewards
+        :param batch_size: number of (s,a,r,s') experiences we use in each SGD
+        update
+        :param memory_size: number of experiences the agent keeps in the replay
+        memory
+        :param freq_steps_update_target: frequency at which we copy the
+        parameter
+        from the main model to the target model.
+        :param n_steps_warm_up_memory: number of experiences we require to have
+        in memory before we start training the agent.
+        :param freq_steps_train: frequency at which we update the main model
+        parameters
+        :param n_gradient_steps: number of SGD/Adam updates we perform when we
+        train the main model.
+        :param nn_hidden_layers: architecture of the main and target models.
+        :param max_grad_norm: used to clipped gradients if they become too
+        large.
+        :param normalize_state: True/False depending if you want to normalize
+        the raw states before feeding them into the model.
+        :param epsilon_start: starting exploration rate
+        :param epsilon_end: final exploration rate
+        :param steps_epsilon_decay: number of step in which epsilon decays from
+        'epsilon_start' to 'epsilon_end'
+        :param log_dir: Tensorboard logging folder
+        """
         # TODO: call super() method
         self.env = env
 
@@ -385,7 +413,6 @@ def parse_arguments():
 if __name__ == '__main__':
 
     args = parse_arguments()
-
     env = gym.make(args['env'])
 
     # to ensure reproducibility between runs we need to fix a few seeds.

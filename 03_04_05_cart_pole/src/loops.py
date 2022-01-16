@@ -6,21 +6,26 @@ from pdb import set_trace as stop
 
 import numpy as np
 from tqdm import tqdm
+import torch
 from torch.utils.tensorboard import SummaryWriter
+
 
 
 def train(
     agent,
     env,
     n_episodes: int,
-    log_dir: Path,
+    log_dir: Optional[Path] = None,
     max_steps: Optional[int] = float("inf"),
     n_episodes_evaluate_agent: Optional[int] = 100,
     freq_episodes_evaluate_agent: int = 200,
 ) -> None:
 
     # Tensorborad log writer
-    writer = SummaryWriter(log_dir)
+    logging = False
+    if log_dir is not None:
+        writer = SummaryWriter(log_dir)
+        logging = True
 
     reward_per_episode = []
     steps_per_episode = []
@@ -53,10 +58,11 @@ def train(
             state = next_state
 
         # log to Tensorboard
-        writer.add_scalar('train/rewards', rewards, i)
-        writer.add_scalar('train/steps', steps, i)
-        writer.add_scalar('train/epsilon', agent.epsilon, i)
-        writer.add_scalar('train/replay_memory_size', len(agent.memory), i)
+        if logging:
+            writer.add_scalar('train/rewards', rewards, i)
+            writer.add_scalar('train/steps', steps, i)
+            writer.add_scalar('train/epsilon', agent.epsilon, i)
+            writer.add_scalar('train/replay_memory_size', len(agent.memory), i)
 
         reward_per_episode.append(rewards)
         steps_per_episode.append(steps)
@@ -73,8 +79,9 @@ def train(
             print(f'Reward mean: {np.mean(eval_rewards):.2f}, std: {np.std(eval_rewards):.2f}')
             print(f'Num steps mean: {np.mean(eval_steps):.2f}, std: {np.std(eval_steps):.2f}')
             # print(f'Success rate: {success_rate:.2%}')
-            writer.add_scalar('eval/avg_reward', np.mean(eval_rewards), i)
-            writer.add_scalar('eval/avg_steps', np.mean(eval_steps), i)
+            if logging:
+                writer.add_scalar('eval/avg_reward', np.mean(eval_rewards), i)
+                writer.add_scalar('eval/avg_steps', np.mean(eval_steps), i)
             # writer.add_scalar('eval/success_rate', success_rate, i)
 
         if global_step_counter > max_steps:
@@ -85,8 +92,12 @@ def evaluate(
     agent,
     env,
     n_episodes: int,
-    epsilon: Optional[float] = None
+    epsilon: Optional[float] = None,
+    seed: Optional[int] = 0,
 ) -> Tuple[List, List]:
+
+    from src.utils import set_seed
+    set_seed(env, seed)
 
     # output metrics
     reward_per_episode = []

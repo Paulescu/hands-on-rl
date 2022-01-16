@@ -1,0 +1,1 @@
+{"learning_rate": 0.119449136260578, "discount_factor": 0.99, "batch_size": 128, "memory_size": 100000, "freq_steps_update_target": 1000, "n_steps_warm_up_memory": 1000, "freq_steps_train": 16, "n_gradient_steps": 16, "nn_hidden_layers": null, "max_grad_norm": 1, "normalize_state": false, "epsilon_start": 0.9, "epsilon_end": 0.1421425009699689, "steps_epsilon_decay": 100000}

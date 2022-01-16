@@ -75,9 +75,7 @@ CartPole
   - [x] agent.load_from_disk()
 
 - [ ] Integrate Optuna to find best hyper-parameters for linear agent.
-- [ ] Integrate Optuna to find best hyper-parameters for deep agent.
-
-
+- [x] Integrate Optuna to find best hyper-parameters for deep agent.
 
 - [ ] NN model notebook where we train and evaluate the agent  
 - [ ] Generate video from trained agent.
@@ -85,3 +83,5 @@ CartPole
 - [ ] Linear model notebook where we train and evaluate the agent
 - [ ] Generate video from trained agent.
 
+## References
+- [Deep Learning that matters](https://arxiv.org/pdf/1709.06560.pdf)

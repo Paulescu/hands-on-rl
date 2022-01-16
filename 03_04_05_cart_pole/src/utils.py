@@ -24,10 +24,18 @@ def get_agent_id(env_name: str) -> str:
     if not dir.exists():
         os.makedirs(dir)
 
-    try:
-        agent_id = max([int(id) for id in os.listdir(dir)]) + 1
-    except ValueError:
-        agent_id = 0
+    # try:
+    #     agent_id = max([int(id) for id in os.listdir(dir)]) + 1
+    # except ValueError:
+    #     agent_id = 0
+
+    ids = []
+    for id in os.listdir(dir):
+        try:
+            ids.append(int(id))
+        except:
+            pass
+    agent_id = max(ids)
 
     return str(agent_id)
 
@@ -115,7 +123,7 @@ def get_observation_samples(env: gym.Env, n_samples: int) -> np.array:
 
 
 def set_seed(
-    # env,
+    env,
     seed
 ):
     """To ensure reproducible runs we fix the seed for different libraries"""
@@ -124,6 +132,9 @@ def set_seed(
 
     import numpy as np
     np.random.seed(seed)
+
+    env.seed(seed)
+    env.action_space.seed(seed)
 
     import torch
     torch.manual_seed(seed)

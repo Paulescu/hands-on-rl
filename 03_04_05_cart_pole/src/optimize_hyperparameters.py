@@ -105,6 +105,8 @@ def objective(
         args = sample_hyper_parameters(trial, force_linear_model=force_linear_model)
         mlflow.log_params(trial.params)
 
+        set_seed(env, args['seed'])
+
         # create agent object
         agent = QAgent(
             env,
@@ -126,9 +128,10 @@ def objective(
         )
 
         # fix seed before training
-        set_seed(args['seed'])
+        # set_seed(env, args['seed'])
         train(agent, env,
               n_episodes=n_episodes_to_train,
+              seed=args['seed'],
               log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id,
               n_episodes_evaluate_agent=100,
               freq_episodes_evaluate_agent=n_episodes_to_train+1)

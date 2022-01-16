@@ -16,7 +16,7 @@ def show_video(agent, env, sleep_sec: float = 0.1):
     done = False
     while not done:
 
-        action = agent.get_action(state)
+        action = agent.act(state)
         state, reward, done, info = env.step(action)
         env.render()
         sleep(sleep_sec)
