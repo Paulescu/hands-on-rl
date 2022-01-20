@@ -220,7 +220,7 @@ class QAgent:
         """
         Behavioural policy
         """
-        if not epsilon:
+        if epsilon is None:
             # update epsilon
             self.epsilon = self.epsilon_fn(self._step_counter)
             epsilon = self.epsilon

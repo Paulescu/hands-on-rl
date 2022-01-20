@@ -1,6 +1,7 @@
 from time import sleep
 from argparse import ArgumentParser
 from pdb import set_trace as stop
+from typing import Optional
 
 import pandas as pd
 import gym
@@ -10,13 +11,14 @@ from src.config import SAVED_AGENTS_DIR
 import numpy as np
 
 
-def show_video(agent, env, sleep_sec: float = 0.1):
+def show_video(agent, env, sleep_sec: float = 0.1, seed: Optional[int] = 0):
 
+    env.seed(seed)
     state = env.reset()
     done = False
     while not done:
 
-        action = agent.act(state)
+        action = agent.act(state, epsilon=0.001)
         state, reward, done, info = env.step(action)
         env.render()
         sleep(sleep_sec)

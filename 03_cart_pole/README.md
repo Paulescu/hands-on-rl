@@ -1,17 +1,19 @@
 # Linear Q learning to keep the balance 💃
 
-This is part 3 of my course Hands-on reinforcement learning.
+
+Thi is part 3 of my course Hands-on reinforcement learning.
 
 Today we enter new territory...
 
 A territory where function approximation (aka supervised machine learning)
 meets good old Reinforcement Learning.
 
+We solve the Cart Pole environment of OpenAI using **parametric Q-learning**.
+
 > *There exists everywhere a medium in things, determined by equilibrium.*
 >
 > --_Dmitri Mendeleev_
 
-There is a lot to diggest here, so I decided to split this lecture in 3 parts:
 
 ### Table of Contents
 
@@ -57,4 +59,5 @@ All `python` commands are executed froms this virtual environment created by poe
 2. [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
 3. [Linear Q agent with bad hyper-parameters](notebooks/02_linear_q_agent_bad_hyperparameters.ipynb)
 4. [Linear Q agent with good hyper-parameters](notebooks/03_linear_q_agent_good_hyperparameters.ipynb)
-5. [Homework](notebooks/04_homework.ipynb)
+5. [Deep q agent]()
+6. [Homework](notebooks/04_homework.ipynb)

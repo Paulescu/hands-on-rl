@@ -77,3 +77,18 @@ how it becomes a crucial ingredient in modern reinforcement learning.
 - Recap ✨
 - Homework 📚
 - What’s next? ❤️
+
+## 03. Parametric Q-learning to keep the balance 💃 🏆
+
+👉 [Read in datamachines](http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning/)
+👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-4-55da5eae851f)
+
+- The Cart Pole problem 🕹️
+- Environment, actions, states, rewards
+- Random agent baseline 🤖 🍸
+- Parametric Q-learning
+- Hello PyTorch! 👋
+- Linear Q agent 🤖
+- Recap ✨
+- Homework 📚
+- What’s next? ❤️
