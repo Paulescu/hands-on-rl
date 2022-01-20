@@ -1,4 +1,4 @@
-# Linear Q learning to keep the balance 💃
+# Parametric Q learning to keep the balance 💃
 
 
 Thi is part 3 of my course Hands-on reinforcement learning.

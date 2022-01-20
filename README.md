@@ -33,6 +33,7 @@ how it becomes a crucial ingredient in modern reinforcement learning.
 0. Introduction to Reinforcement Learning
 1. [Q-learning to drive a taxi 🏆](01_taxi/README.md)
 2. [SARSA to beat gravity 🏆](02_mountain_car/README.md)
+3. [Parametric Q learning to keep the balance 💃 🏆](03_cart_pole/README.md)
 
 -----
 
