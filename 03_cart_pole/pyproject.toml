@@ -21,6 +21,9 @@ PyYAML = "^6.0"
 pyglet = "^1.5.21"
 optuna = "^2.10.0"
 mlflow = "^1.22.0"
+neptune-client = "^0.14.2"
+neptune-optuna = "^0.9.14"
+gdown = "^4.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

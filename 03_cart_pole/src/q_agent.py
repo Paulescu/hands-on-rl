@@ -216,6 +216,23 @@ class QAgent:
 
         return s
 
+    def get_q_values(self, state: np.array) -> torch.Tensor:
+        """"""
+        # make sure s is a numpy array with 2 dimensions,
+        # and normalize it if `self.normalize_state = True`
+        s = self._preprocess_state(state)
+
+        # forward pass through the net to compute q-values for the 3 actions
+        s = torch.from_numpy(s).float()
+        q_values = self.q_net(s)
+
+        if len(state.shape) == 1:
+            # 1-dimensional input array --> 1-dimensional output array
+            return q_values.squeeze(0).detach().numpy()
+        else:
+            # 2-dimensional input array --> 2-dimensional output array
+            return q_values.detach().numpy()
+
     def act(self, state: np.array, epsilon: float = None) -> int:
         """
         Behavioural policy
