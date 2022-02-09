@@ -139,7 +139,7 @@ terminado==0.12.1; python_version >= "3.6"
 testpath==0.5.0; python_version >= "3.7"
 threadpoolctl==3.0.0; python_version >= "3.7"
 tomli==2.0.0; python_version >= "3.7"
-torch==1.10.1; python_full_version >= "3.6.2"
+
 tornado==6.1; python_full_version >= "3.6.1" and python_version >= "3.7"
 tqdm==4.62.3; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.4.0")
 traitlets==5.1.1; python_full_version >= "3.6.1" and python_version >= "3.7"

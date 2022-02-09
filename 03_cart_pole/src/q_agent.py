@@ -31,7 +31,7 @@ from src.utils import (
     get_agent_id,
     get_input_output_dims,
     get_epsilon_decay_fn,
-    load_default_hyperparameters,
+    # load_default_hyperparameters,
     get_observation_samples,
     set_seed,
     get_num_model_parameters
@@ -89,7 +89,6 @@ class QAgent:
         'epsilon_start' to 'epsilon_end'
         :param log_dir: Tensorboard logging folder
         """
-        # TODO: call super() method
         self.env = env
 
         # general hyper-parameters
@@ -139,10 +138,10 @@ class QAgent:
         self.state_normalizer = None
         if normalize_state:
             state_samples = get_observation_samples(env, n_samples=500000)
-            self.max_states = state_samples.max(axis=0)
-            self.min_states = state_samples.min(axis=0)
-            # print('Max states: ', self.max_states)
-            # print('Min states: ', self.min_states)
+            # self.max_states = state_samples.max(axis=0)
+            # self.min_states = state_samples.min(axis=0)
+            self.mean_states = state_samples.mean(axis=0)
+            self.std_states = state_samples.std(axis=0)
 
         # create a tensorboard logger if `log_dir` was provided
         # logging becomes crucial to understand what is not working in our code.
@@ -199,7 +198,8 @@ class QAgent:
 
     def _normalize_state(self, state: np.array) -> np.array:
         """"""
-        return (state - self.min_states) / (self.max_states - self.min_states)
+        # return (state - self.min_states) / (self.max_states - self.min_states)
+        return (state - self.mean_states) / (self.std_states)
 
     def _preprocess_state(self, state: np.array) -> np.array:
 
@@ -216,22 +216,22 @@ class QAgent:
 
         return s
 
-    def get_q_values(self, state: np.array) -> torch.Tensor:
-        """"""
-        # make sure s is a numpy array with 2 dimensions,
-        # and normalize it if `self.normalize_state = True`
-        s = self._preprocess_state(state)
-
-        # forward pass through the net to compute q-values for the 3 actions
-        s = torch.from_numpy(s).float()
-        q_values = self.q_net(s)
-
-        if len(state.shape) == 1:
-            # 1-dimensional input array --> 1-dimensional output array
-            return q_values.squeeze(0).detach().numpy()
-        else:
-            # 2-dimensional input array --> 2-dimensional output array
-            return q_values.detach().numpy()
+    # def get_q_values(self, state: np.array) -> torch.Tensor:
+    #     """"""
+    #     # make sure s is a numpy array with 2 dimensions,
+    #     # and normalize it if `self.normalize_state = True`
+    #     s = self._preprocess_state(state)
+    #
+    #     # forward pass through the net to compute q-values for the 3 actions
+    #     s = torch.from_numpy(s).float()
+    #     q_values = self.q_net(s)
+    #
+    #     if len(state.shape) == 1:
+    #         # 1-dimensional input array --> 1-dimensional output array
+    #         return q_values.squeeze(0).detach().numpy()
+    #     else:
+    #         # 2-dimensional input array --> 2-dimensional output array
+    #         return q_values.detach().numpy()
 
     def act(self, state: np.array, epsilon: float = None) -> int:
         """
@@ -343,8 +343,10 @@ class QAgent:
             json.dump(self.hparams, f)
 
         if self.normalize_state:
-            np.save(path / 'max_states.npy', self.max_states)
-            np.save(path / 'min_states.npy', self.min_states)
+            # np.save(path / 'max_states.npy', self.max_states)
+            # np.save(path / 'min_states.npy', self.min_states)
+            np.save(path / 'mean_states.npy', self.mean_states)
+            np.save(path / 'std_states.npy', self.std_states)
 
         # save main model
         torch.save(self.q_net, path / 'model')
@@ -367,8 +369,10 @@ class QAgent:
         agent.normalize_state = hparams['normalize_state']
         if hparams['normalize_state']:
             # load max/min states to normalize the input data to the model
-            agent.max_states = np.load(path / 'max_states.npy')
-            agent.min_states = np.load(path / 'min_states.npy')
+            # agent.max_states = np.load(path / 'max_states.npy')
+            # agent.min_states = np.load(path / 'min_states.npy')
+            agent.mean_states = np.load(path / 'mean_states.npy')
+            agent.std_states = np.load(path / 'std_states.npy')
 
         agent.q_net = torch.load(path / 'model')
         agent.q_net.eval()
@@ -410,15 +414,19 @@ def parse_arguments():
     parser.add_argument('--seed', type=int, default=0)
 
     args = parser.parse_args()
-    assert args.env in {'MountainCar-v0', 'CartPole-v1'}
+    # assert args.env in {'MountainCar-v0', 'CartPole-v1'}
+    #
+    # args_dict = load_default_hyperparameters(args.env)
+    #
+    # for arg in vars(args):
+    #     # overwrite default values with command line values, if provided
+    #     command_line_value = getattr(args, arg)
+    #     if command_line_value is not None:
+    #         args_dict[arg] = command_line_value
 
-    args_dict = load_default_hyperparameters(args.env)
-
+    args_dict = {}
     for arg in vars(args):
-        # overwrite default values with command line values, if provided
-        command_line_value = getattr(args, arg)
-        if command_line_value is not None:
-            args_dict[arg] = command_line_value
+        args_dict[arg] = getattr(args, arg)
 
     print('Hyper-parameters')
     for key, value in args_dict.items():
@@ -430,12 +438,15 @@ def parse_arguments():
 if __name__ == '__main__':
 
     args = parse_arguments()
+
+    # setup the environment
     env = gym.make(args['env'])
 
-    # to ensure reproducibility between runs we need to fix a few seeds.
+    # fix seeds to ensure reproducibility between runs
     set_seed(env, args['seed'])
 
-    # this is the name we use to save the agent and its tensorboard logs.
+    # generate a unique agent_id, that we later use to save results to disk, as
+    # well as TensorBoard logs.
     agent_id = get_agent_id(args['env'])
     print('agent_id: ', agent_id)
 

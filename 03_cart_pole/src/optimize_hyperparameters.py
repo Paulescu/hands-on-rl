@@ -9,7 +9,7 @@ import mlflow
 
 from src.q_agent import QAgent
 from src.utils import get_agent_id
-from src.config import TENSORBOARD_LOG_DIR, SAVED_AGENTS_DIR, OPTUNA_DB
+from src.config import TENSORBOARD_LOG_DIR, SAVED_AGENTS_DIR #, OPTUNA_DB
 from src.utils import set_seed
 from src.loops import train, evaluate
 
@@ -28,7 +28,9 @@ def sample_hyper_parameters(
     memory_size = trial.suggest_categorical("memory_size", [int(1e4), int(5e4), int(1e5)])
 
     # we update the main model parameters every 'freq_steps_train' steps
-    freq_steps_train = trial.suggest_categorical('freq_steps_train', [1, 4, 8, 16, 128, 256])
+    # freq_steps_train = trial.suggest_categorical('freq_steps_train', [1, 4, 8, 16, 128, 256])
+    # TODO: added to speed up iterations.
+    freq_steps_train = trial.suggest_categorical('freq_steps_train', [8, 16, 128, 256])
 
     # we update the target model parameters every 'freq_steps_update_target' steps
     freq_steps_update_target = trial.suggest_categorical('freq_steps_update_target', [10, 100, 1000])
@@ -47,7 +49,9 @@ def sample_hyper_parameters(
         nn_hidden_layers = None
     else:
         # neural network hidden layers
-        nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", ["None", "[64, 64]", "[256, 256]"])
+        # nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", ["None", "[64, 64]", "[256, 256]"])
+        # TODO: added to speed up iterations.
+        nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", ["[256, 256]"])
         nn_hidden_layers = {"None": None, "[64, 64]": [64, 64], "[256, 256]": [256, 256]}[nn_hidden_layers]
 
     # how large do we let the gradients grow before capping them?
@@ -98,6 +102,7 @@ def objective(
 
     with mlflow.start_run():
 
+        # generate unique agent_id
         agent_id = get_agent_id(env_name)
         mlflow.log_param('agent_id', agent_id)
 
@@ -105,6 +110,7 @@ def objective(
         args = sample_hyper_parameters(trial, force_linear_model=force_linear_model)
         mlflow.log_params(trial.params)
 
+        # fix seeds to ensure reproducible runs
         set_seed(env, args['seed'])
 
         # create agent object
@@ -127,11 +133,10 @@ def objective(
             # log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id
         )
 
-        # fix seed before training
-        # set_seed(env, args['seed'])
-        train(agent, env,
+        # train loop
+        train(agent,
+              env,
               n_episodes=n_episodes_to_train,
-              seed=args['seed'],
               log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id,
               n_episodes_evaluate_agent=100,
               freq_episodes_evaluate_agent=n_episodes_to_train+1)
@@ -166,12 +171,12 @@ if __name__ == '__main__':
     # set Optuna study
     study = optuna.create_study(study_name=args.experiment_name,
                                 direction='maximize',
-                                load_if_exists=True,
-                                storage=f'sqlite:///{OPTUNA_DB}')
+                                load_if_exists=True)
+                                # storage=f'sqlite:///{OPTUNA_DB}')
 
     # Wrap the objective inside a lambda and call objective inside it
     # Nice trick taken from https://www.kaggle.com/general/261870
-    func = lambda trial: objective(trial, force_linear_model=args.force_linear_model)
+    func = lambda trial: objective(trial, force_linear_model=args.force_linear_model, n_episodes_to_train=args.episodes)
 
     # run Optuna
     study.optimize(func, n_trials=args.trials)

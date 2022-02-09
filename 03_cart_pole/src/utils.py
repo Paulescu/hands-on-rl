@@ -35,7 +35,9 @@ def get_agent_id(env_name: str) -> str:
             ids.append(int(id))
         except:
             pass
-    agent_id = max(ids)
+    agent_id = max(ids) + 1
+
+    # stop()
 
     return str(agent_id)
 
@@ -83,14 +85,14 @@ def get_epsilon_exponential_decay_fn(
     return epsilon_fn
 
 
-def load_default_hyperparameters(env_name: str) -> Dict:
-    """"""
-    current_dir = pathlib.Path(__file__).parent
-
-    with open(current_dir / 'hyperparameters.yaml', 'r') as stream:
-        default_hp = yaml.safe_load(stream)
-
-    return default_hp[env_name]
+# def load_default_hyperparameters(env_name: str) -> Dict:
+#     """"""
+#     current_dir = pathlib.Path(__file__).parent
+#
+#     with open(current_dir / 'hyperparameters.yaml', 'r') as stream:
+#         default_hp = yaml.safe_load(stream)
+#
+#     return default_hp[env_name]
 
 def get_success_rate_from_n_steps(env: gym.Env, steps: List[int]):
 

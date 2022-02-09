@@ -46,7 +46,10 @@ def download_agent_parameters() -> Path:
 
 
 def simulate_episode(env, agent) -> List[Dict]:
-    """"""
+    """
+    We let the agent interact with the environment and return a list of collected
+    states and actions
+    """
     done = False
     state = env.reset()
     samples = []
@@ -71,7 +74,11 @@ def generate_state_action_data(
     n_samples: int,
     path: Path
 ) -> None:
-    """"""
+    """
+    We let the agent interact the environment until we have collected
+    n_samples of data.
+    Then we save the data as a csv file with columns: s0, s1, s2, s3, a
+    """
     samples = []
     with tqdm(total=n_samples) as pbar:
         while len(samples) < n_samples:
@@ -79,11 +86,15 @@ def generate_state_action_data(
             pbar.update(len(new_samples))
             samples += new_samples
 
+    # save dataframe to csv file
     pd.DataFrame(samples).to_csv(path, index=False)
 
 
 class OptimalPolicyDataset(Dataset):
-
+    """
+    PyTorch custom dataset that wraps around the pandas dataframe and that
+    will speak to the DataLoader later on, when we train the model.
+    """
     def __init__(self, X: pd.DataFrame, y: pd.Series):
         self.X = X
         self.y = y
@@ -182,7 +193,6 @@ def run(
 
     print('Downloading agent data from GDrive...')
     path_to_agent_data = download_agent_parameters()
-    # path_to_agent_data = Path('/Users/paulabartabajo/src/online-courses/hands-on-rl/03_cart_pole/saved_agents/CartPole-v1/79')
     agent = QAgent.load_from_disk(env, path=path_to_agent_data)
 
     set_seed(env, 1234)
