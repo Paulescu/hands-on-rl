@@ -135,9 +135,8 @@ class QAgent:
 
         # input normalizer
         self.normalize_state = normalize_state
-        self.state_normalizer = None
         if normalize_state:
-            state_samples = get_observation_samples(env, n_samples=500000)
+            state_samples = get_observation_samples(env, n_samples=100000)
             # self.max_states = state_samples.max(axis=0)
             # self.min_states = state_samples.min(axis=0)
             self.mean_states = state_samples.mean(axis=0)
@@ -252,7 +251,7 @@ class QAgent:
         s = self._preprocess_state(state)
 
         # forward pass through the net to compute q-values for the 3 actions
-        s = torch.from_numpy(s).float()
+        s = torch.from_numpy(s).float().to(self.device)
         q_values = self.q_net(s)
 
         # extract index max q-value and reshape tensor to dimensions (1, 1)
@@ -301,7 +300,7 @@ class QAgent:
             action_batch = torch.cat([torch.tensor([[a]]).long().view(1, -1) for a in batch.action]).to(self.device)
             reward_batch = torch.cat([torch.tensor([r]).float() for r in batch.reward]).to(self.device)
             next_state_batch = torch.cat([torch.from_numpy(s).float().view(1, -1) for s in batch.next_state]).to(self.device)
-            done_batch = torch.tensor(batch.done).float()
+            done_batch = torch.tensor(batch.done).float().to(self.device)
 
             # q_values for all 3 actions
             q_values = self.q_net(state_batch)
