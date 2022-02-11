@@ -81,6 +81,7 @@ how it becomes a crucial ingredient in modern reinforcement learning.
 
 ## 03. Parametric Q-learning to keep the balance 💃 🏆
 
+### Linear Q-learning
 👉 [Read in datamachines](http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning/)
 👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-4-55da5eae851f)
 
@@ -90,6 +91,17 @@ how it becomes a crucial ingredient in modern reinforcement learning.
 - Parametric Q-learning
 - Hello PyTorch! 👋
 - Linear Q agent 🤖
+- Recap ✨
+- Homework 📚
+- What’s next? ❤️
+
+### Deep Q-learning
+👉 [Read in datamachines](http://datamachines.xyz/2022/02/11/hands-on-reinforcement-learning-course-part-5-deep-q-learning/)
+👉 [Read in Towards Data Science](https://towardsdatascience.com/hands-on-reinforcement-learning-course-part-5-bdb2e7fa243c)
+
+- Let’s go deep!
+- Hands-on Introduction to Deep Learning
+- Deep Q learning to solve the Cart Pole
 - Recap ✨
 - Homework 📚
 - What’s next? ❤️
