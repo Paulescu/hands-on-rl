@@ -55,9 +55,12 @@ All `python` commands are executed froms this virtual environment created by poe
 
 ### Notebooks
 
-1. [Explore the environment](notebooks/00_environment.ipynb)
-2. [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
-3. [Linear Q agent with bad hyper-parameters](notebooks/02_linear_q_agent_bad_hyperparameters.ipynb)
-4. [Linear Q agent with good hyper-parameters](notebooks/03_linear_q_agent_good_hyperparameters.ipynb)
-5. [Deep q agent]()
-6. [Homework](notebooks/04_homework.ipynb)
+0. [Explore the environment](notebooks/00_environment.ipynb)
+1. [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
+2. [Linear Q agent with bad hyper-parameters](notebooks/02_linear_q_agent_bad_hyperparameters.ipynb)
+3. [Linear Q agent with good hyper-parameters](notebooks/03_linear_q_agent_good_hyperparameters.ipynb)
+4. [Homework](notebooks/04_homework.ipynb)
+5. [Crash course on neural networks](notebooks/05_crash_course_on_neural_nets.ipynb)
+6. [Deep Q agent with bad hyper-parameters](notebooks/06_deep_q_agent_bad_hyperparameters.ipynb)
+7. [Deep Q agent with good hyper-parameters](notebooks/07_deep_q_agent_good_hyperparameters.ipynb)
+8. [Homework](notebooks/08_homework.ipynb)
