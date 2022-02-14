@@ -85,15 +85,6 @@ def get_epsilon_exponential_decay_fn(
     return epsilon_fn
 
 
-# def load_default_hyperparameters(env_name: str) -> Dict:
-#     """"""
-#     current_dir = pathlib.Path(__file__).parent
-#
-#     with open(current_dir / 'hyperparameters.yaml', 'r') as stream:
-#         default_hp = yaml.safe_load(stream)
-#
-#     return default_hp[env_name]
-
 def get_success_rate_from_n_steps(env: gym.Env, steps: List[int]):
 
     import numpy as np
@@ -152,6 +143,27 @@ def set_seed(
 def get_num_model_parameters(model: nn.Module) -> int:
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
+
+# from dotenv import dotenv_values
+# import uuid
+# from pdb import set_trace as stop
+
+# import pandas as pd
+# import git
+
+# from src.io import get_list_files
+
+
+# def get_project_root() -> Path:
+#     return Path(__file__).parent.resolve().parent
+#
+# from typing import Dict
+# def load_env_config() -> Dict:
+#     """
+#     """
+#     config = dotenv_values(get_project_root() / ".env")
+#     return config
+#
 
 
 

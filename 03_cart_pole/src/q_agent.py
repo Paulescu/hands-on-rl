@@ -137,8 +137,6 @@ class QAgent:
         self.normalize_state = normalize_state
         if normalize_state:
             state_samples = get_observation_samples(env, n_samples=100000)
-            # self.max_states = state_samples.max(axis=0)
-            # self.min_states = state_samples.min(axis=0)
             self.mean_states = state_samples.mean(axis=0)
             self.std_states = state_samples.std(axis=0)
 
@@ -214,23 +212,6 @@ class QAgent:
             s = self._normalize_state(s)
 
         return s
-
-    # def get_q_values(self, state: np.array) -> torch.Tensor:
-    #     """"""
-    #     # make sure s is a numpy array with 2 dimensions,
-    #     # and normalize it if `self.normalize_state = True`
-    #     s = self._preprocess_state(state)
-    #
-    #     # forward pass through the net to compute q-values for the 3 actions
-    #     s = torch.from_numpy(s).float()
-    #     q_values = self.q_net(s)
-    #
-    #     if len(state.shape) == 1:
-    #         # 1-dimensional input array --> 1-dimensional output array
-    #         return q_values.squeeze(0).detach().numpy()
-    #     else:
-    #         # 2-dimensional input array --> 2-dimensional output array
-    #         return q_values.detach().numpy()
 
     def act(self, state: np.array, epsilon: float = None) -> int:
         """
@@ -413,15 +394,6 @@ def parse_arguments():
     parser.add_argument('--seed', type=int, default=0)
 
     args = parser.parse_args()
-    # assert args.env in {'MountainCar-v0', 'CartPole-v1'}
-    #
-    # args_dict = load_default_hyperparameters(args.env)
-    #
-    # for arg in vars(args):
-    #     # overwrite default values with command line values, if provided
-    #     command_line_value = getattr(args, arg)
-    #     if command_line_value is not None:
-    #         args_dict[arg] = command_line_value
 
     args_dict = {}
     for arg in vars(args):

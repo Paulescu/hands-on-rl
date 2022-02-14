@@ -1,7 +1,6 @@
 # Parametric Q learning to keep the balance 💃
 
-
-Thi is part 3 of my course Hands-on reinforcement learning.
+This is part 3 of my course Hands-on reinforcement learning.
 
 Today we enter new territory...
 
