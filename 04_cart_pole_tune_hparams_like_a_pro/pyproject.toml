@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["Pau <plabartabajo@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+gym = "^0.21.0"
+torch = "^1.10.2"
+optuna = "^2.10.0"
+neptune-client = "^0.14.3"
+python-dotenv = "^0.19.2"
+jupyter = "^1.0.0"
+matplotlib = "^3.5.1"
+neptune-optuna = "^0.9.14"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
