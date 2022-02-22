@@ -49,10 +49,14 @@ def train(
 
         # log to Tensorboard
         if logging:
-            run['train/reward'].log(rewards)
-            run['train/steps'].log(steps)
-            run['train/epsilon'].log(agent.epsilon)
-            run['train/replay_memory_size'].log(len(agent.memory))
+            # run['train/reward'].log(rewards)
+            # run['train/steps'].log(steps)
+            # run['train/epsilon'].log(agent.epsilon)
+            # run['train/replay_memory_size'].log(len(agent.memory))
+            run.log({'train/reward': rewards})
+            run.log({'train/steps': steps})
+            run.log({'train/epsilon': agent.epsilon})
+            run.log({'train/replay_memory_size': len(agent.memory)})
 
         reward_per_episode.append(rewards)
         steps_per_episode.append(steps)

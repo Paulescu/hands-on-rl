@@ -14,6 +14,7 @@ python-dotenv = "^0.19.2"
 jupyter = "^1.0.0"
 matplotlib = "^3.5.1"
 neptune-optuna = "^0.9.14"
+wandb = "^0.12.10"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

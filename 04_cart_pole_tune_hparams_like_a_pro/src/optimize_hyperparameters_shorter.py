@@ -50,7 +50,7 @@ def sample_hyper_parameters(
     n_steps_warm_up_memory = trial.suggest_categorical("n_steps_warm_up_memory", [1000, 5000])
 
     # how many consecutive gradient descent steps to perform when we update the main model parameters
-    n_gradient_steps = trial.suggest_categorical("n_gradient_steps", [1, 4, 16])
+    n_gradient_steps = trial.suggest_categorical("n_gradient_steps", [1, 4, 8, 16])
 
     # model architecture to approximate q values
     if force_linear_model:
@@ -65,7 +65,7 @@ def sample_hyper_parameters(
 
     # how large do we let the gradients grow before capping them?
     # Explosive gradients can be an issue and this hyper-parameters helps mitigate it.
-    max_grad_norm = trial.suggest_categorical("max_grad_norm", [1, 10, 100])
+    max_grad_norm = trial.suggest_categorical("max_grad_norm", [1, 10])
 
     # should we scale the inputs before feeding them to the model?
     normalize_state = trial.suggest_categorical('normalize_state', [True, False])
@@ -74,11 +74,11 @@ def sample_hyper_parameters(
     epsilon_start = trial.suggest_categorical("epsilon_start", [0.9])
 
     # final value for the exploration rate
-    epsilon_end = trial.suggest_uniform("epsilon_end", 0, 0.2)
+    epsilon_end = trial.suggest_uniform("epsilon_end", 0.05, 0.2)
 
     # for how many steps do we decrease epsilon from its starting value to
     # its final value `epsilon_end`
-    steps_epsilon_decay = trial.suggest_categorical("steps_epsilon_decay", [int(1e3), int(1e4), int(1e5)])
+    steps_epsilon_decay = trial.suggest_categorical("steps_epsilon_decay", [int(1e4), int(1e5), int(1e6)])
 
     seed = trial.suggest_int('seed', 0, 2 ** 30 - 1)
 

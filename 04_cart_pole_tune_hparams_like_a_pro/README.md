@@ -1,6 +1,6 @@
 <div align="center">
 <h1>Hyper-parameter tuning in deep Q learning </h1>
-<h2>Optuna + Neptune.ai = 🚀</h2>
+<h2>Optuna + Weights&Biases = 🚀</h2>
 </div>
 
 > *“The expectations of life depend upon diligence.
@@ -9,7 +9,7 @@
 > --*Confucius*
 
 
-
 ## Optuna
 
-## Neptune.AI
+
+## Weights & Biases

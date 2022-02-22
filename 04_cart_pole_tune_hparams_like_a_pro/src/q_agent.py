@@ -267,7 +267,8 @@ class QAgent:
             self.optimizer.step()
 
         if self.run is not None:
-            self.run['train/loss'].log(np.mean(losses))
+            # self.run['train/loss'].log(np.mean(losses))
+            self.run.log({'train/loss': np.mean(losses)})
 
     def save_checkpoint(self) -> None:
         """"""

@@ -65,7 +65,7 @@ def sample_hyper_parameters(
 
     # how large do we let the gradients grow before capping them?
     # Explosive gradients can be an issue and this hyper-parameters helps mitigate it.
-    max_grad_norm = trial.suggest_categorical("max_grad_norm", [1, 10, 100])
+    max_grad_norm = trial.suggest_categorical("max_grad_norm", [1, 10])
 
     # should we scale the inputs before feeding them to the model?
     normalize_state = trial.suggest_categorical('normalize_state', [True, False])
