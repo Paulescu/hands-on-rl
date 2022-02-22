@@ -18,14 +18,6 @@ from src.loops import train, evaluate
 
 N_EPISODES_TO_EVALUATE = 1000 # 1000
 
-try:
-    NEPTUNE_PROJECT = os.environ['NEPTUNE_PROJECT']
-    NEPTUNE_API_TOKEN = os.environ['NEPTUNE_API_TOKEN']
-except:
-    print('Set environment variables NEPTUNE_PROJECT and NEPTUNE_API_TOKEN')
-    raise
-
-
 def sample_hyper_parameters(
     trial: optuna.trial.Trial,
     force_linear_model: bool = False,
