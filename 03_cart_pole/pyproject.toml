@@ -19,6 +19,7 @@ PyYAML = "^6.0"
 pyglet = "^1.5.21"
 mlflow = "^1.22.0"
 gdown = "^4.2.0"
+optuna = "^2.10.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

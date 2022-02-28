@@ -136,7 +136,7 @@ class QAgent:
         # input normalizer
         self.normalize_state = normalize_state
         if normalize_state:
-            state_samples = get_observation_samples(env, n_samples=100000)
+            state_samples = get_observation_samples(env, n_samples=10000)
             self.mean_states = state_samples.mean(axis=0)
             self.std_states = state_samples.std(axis=0)
 
@@ -300,7 +300,6 @@ class QAgent:
                 target_q_values = (1 - done_batch) * next_q_values * self.discount_factor + reward_batch
 
             # compute loss
-            # loss = F.mse_loss(q_values, target_q_values.unsqueeze(1))
             loss = F.mse_loss(q_values.squeeze(1), target_q_values)
             losses.append(loss.item())
 
@@ -323,8 +322,6 @@ class QAgent:
             json.dump(self.hparams, f)
 
         if self.normalize_state:
-            # np.save(path / 'max_states.npy', self.max_states)
-            # np.save(path / 'min_states.npy', self.min_states)
             np.save(path / 'mean_states.npy', self.mean_states)
             np.save(path / 'std_states.npy', self.std_states)
 
@@ -348,9 +345,6 @@ class QAgent:
 
         agent.normalize_state = hparams['normalize_state']
         if hparams['normalize_state']:
-            # load max/min states to normalize the input data to the model
-            # agent.max_states = np.load(path / 'max_states.npy')
-            # agent.min_states = np.load(path / 'min_states.npy')
             agent.mean_states = np.load(path / 'mean_states.npy')
             agent.std_states = np.load(path / 'std_states.npy')
 
@@ -383,7 +377,7 @@ def parse_arguments():
     parser.add_argument('--freq_steps_update_target', type=int)
     parser.add_argument('--freq_steps_train', type=int)
     parser.add_argument('--normalize_state', dest='normalize_state', action='store_true')
-    parser.set_defaults(normalize_state=None)
+    parser.set_defaults(normalize_state=False)
     parser.add_argument('--n_gradient_steps', type=int,)
     parser.add_argument("--nn_hidden_layers", type=int, nargs="+",)
     parser.add_argument('--nn_init_method', type=str, default='default')

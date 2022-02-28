@@ -22,7 +22,7 @@ def sample_hyper_parameters(
     force_linear_model: bool = False,
 ) -> Dict:
 
-    learning_rate = trial.suggest_loguniform("learning_rate", 1e-5, 1)
+    learning_rate = trial.suggest_loguniform("learning_rate", 1e-5, 1e-2)
     discount_factor = trial.suggest_categorical("discount_factor", [0.9, 0.95, 0.99])
     batch_size = trial.suggest_categorical("batch_size", [16, 32, 64, 128])
     memory_size = trial.suggest_categorical("memory_size", [int(1e4), int(5e4), int(1e5)])
@@ -171,8 +171,8 @@ if __name__ == '__main__':
     # set Optuna study
     study = optuna.create_study(study_name=args.experiment_name,
                                 direction='maximize',
-                                load_if_exists=True)
-                                # storage=f'sqlite:///{OPTUNA_DB}')
+                                load_if_exists=True,
+                                storage=f'sqlite:///{OPTUNA_DB}')
 
     # Wrap the objective inside a lambda and call objective inside it
     # Nice trick taken from https://www.kaggle.com/general/261870
