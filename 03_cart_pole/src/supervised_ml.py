@@ -34,7 +34,8 @@ def download_agent_parameters() -> Path:
     Returns the path to the unzipped folder.
     """
     # download .zip file from public google drive
-    url = 'https://docs.google.com/uc?export=download&id=1KH4ANx84PMmCY6H4FoUnkBLVC1z1A6W6'
+    # url = 'https://docs.google.com/uc?export=download&id=1KH4ANx84PMmCY6H4FoUnkBLVC1z1A6W6'
+    url = 'https://docs.google.com/uc?export=download&id=1ZdyAuzY-0VYfyNrg0a7gHd5TOX-GadJJ'
     output = SAVED_AGENTS_DIR / 'CartPole-v1' / 'gdrive_agent.zip'
     gdown.download(url, str(output))
 
@@ -42,7 +43,7 @@ def download_agent_parameters() -> Path:
     with zipfile.ZipFile(str(output), "r") as zip_ref:
         zip_ref.extractall(str(SAVED_AGENTS_DIR / 'CartPole-v1'))
 
-    return SAVED_AGENTS_DIR / 'CartPole-v1' / '79'
+    return SAVED_AGENTS_DIR / 'CartPole-v1' / '298'
 
 
 def simulate_episode(env, agent) -> List[Dict]:

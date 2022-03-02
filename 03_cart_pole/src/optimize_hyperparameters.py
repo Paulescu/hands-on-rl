@@ -9,12 +9,9 @@ import mlflow
 
 from src.q_agent import QAgent
 from src.utils import get_agent_id
-from src.config import TENSORBOARD_LOG_DIR, SAVED_AGENTS_DIR #, OPTUNA_DB
+from src.config import TENSORBOARD_LOG_DIR, SAVED_AGENTS_DIR, OPTUNA_DB
 from src.utils import set_seed
 from src.loops import train, evaluate
-
-
-N_EPISODES_TO_EVALUATE = 1000 # 1000
 
 
 def sample_hyper_parameters(
@@ -28,8 +25,6 @@ def sample_hyper_parameters(
     memory_size = trial.suggest_categorical("memory_size", [int(1e4), int(5e4), int(1e5)])
 
     # we update the main model parameters every 'freq_steps_train' steps
-    # freq_steps_train = trial.suggest_categorical('freq_steps_train', [1, 4, 8, 16, 128, 256])
-    # TODO: added to speed up iterations.
     freq_steps_train = trial.suggest_categorical('freq_steps_train', [8, 16, 128, 256])
 
     # we update the target model parameters every 'freq_steps_update_target' steps
@@ -51,8 +46,8 @@ def sample_hyper_parameters(
         # neural network hidden layers
         # nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", ["None", "[64, 64]", "[256, 256]"])
         # TODO: added to speed up iterations.
-        nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", ["[256, 256]"])
-        nn_hidden_layers = {"None": None, "[64, 64]": [64, 64], "[256, 256]": [256, 256]}[nn_hidden_layers]
+        nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", [[256, 256]])
+        # nn_hidden_layers = {"None": None, "[64, 64]": [64, 64], "[256, 256]": [256, 256]}[nn_hidden_layers]
 
     # how large do we let the gradients grow before capping them?
     # Explosive gradients can be an issue and this hyper-parameters helps mitigate it.
@@ -71,7 +66,7 @@ def sample_hyper_parameters(
     # its final value `epsilon_end`
     steps_epsilon_decay = trial.suggest_categorical("steps_epsilon_decay", [int(1e3), int(1e4), int(1e5)])
 
-    seed = trial.suggest_int('seed', 0, 2 ** 32 - 1)
+    seed = trial.suggest_int('seed', 0, 2 ** 30 - 1)
 
     return {
         'learning_rate': learning_rate,
@@ -95,7 +90,7 @@ def sample_hyper_parameters(
 def objective(
     trial: optuna.trial.Trial,
     force_linear_model: bool = False,
-    n_episodes_to_train: int = 2000,
+    n_episodes_to_train: int = 200,
 ):
     env_name = 'CartPole-v1'
     env = gym.make('CartPole-v1')
@@ -130,23 +125,19 @@ def objective(
             epsilon_start=args['epsilon_start'],
             epsilon_end=args['epsilon_end'],
             steps_epsilon_decay=args['steps_epsilon_decay'],
-            # log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id
+            log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id
         )
 
         # train loop
         train(agent,
               env,
               n_episodes=n_episodes_to_train,
-              log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id,
-              n_episodes_evaluate_agent=100,
-              freq_episodes_evaluate_agent=n_episodes_to_train+1)
+              log_dir=TENSORBOARD_LOG_DIR / env_name / agent_id)
 
         agent.save_to_disk(SAVED_AGENTS_DIR / env_name / agent_id)
 
         # evaluate its performance
-        rewards, steps = evaluate(agent, env,
-                                  n_episodes=N_EPISODES_TO_EVALUATE,
-                                  epsilon=0.00)
+        rewards, steps = evaluate(agent, env, n_episodes=1000, epsilon=0.00)
         mean_reward = np.mean(rewards)
         std_reward = np.std(rewards)
         mlflow.log_metric('mean_reward', mean_reward)
