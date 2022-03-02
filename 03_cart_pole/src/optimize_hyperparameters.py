@@ -102,7 +102,8 @@ def objective(
         mlflow.log_param('agent_id', agent_id)
 
         # hyper-parameters
-        args = sample_hyper_parameters(trial, force_linear_model=force_linear_model)
+        args = sample_hyper_parameters(trial,
+                                       force_linear_model=force_linear_model)
         mlflow.log_params(trial.params)
 
         # fix seeds to ensure reproducible runs
