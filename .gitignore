@@ -1,5 +1,7 @@
 help/
 logs/
 snake/
-
+**/.ipynb_checkpoints/
+**/__pycache__/
+**/saved_agents/
 04_cart_pole_tune_hparams_like_a_pro/

@@ -11,7 +11,7 @@ import gym
 from torch.utils.data import Dataset, DataLoader
 
 import numpy as np
-from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import train_test_split   # Unused import
 import torch
 import torch.optim as optim
 import torch.nn as nn
