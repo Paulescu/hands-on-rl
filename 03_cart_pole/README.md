@@ -26,7 +26,7 @@ We will solve the Cart Pole environment of OpenAI using **parametric Q-learning*
 
 Today's lesson is split into 3 parts.
 
-👉 [Parametric Q-learning](http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning/)  
+👉 <a href="http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning/" target="_blank">Parametric Q learning</a>  
 👉 [Deep Q learning](http://datamachines.xyz/2022/02/11/hands-on-reinforcement-learning-course-part-5-deep-q-learning/)  
 👉 [Hyperparameter search]()
 
