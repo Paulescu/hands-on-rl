@@ -4,4 +4,5 @@ snake/
 **/.ipynb_checkpoints/
 **/__pycache__/
 **/saved_agents/
+**/tensorboard_logs/sml/
 04_cart_pole_tune_hparams_like_a_pro/
