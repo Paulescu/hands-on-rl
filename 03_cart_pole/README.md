@@ -9,9 +9,11 @@
 
 ![](http://datamachines.xyz/wp-content/uploads/2022/01/pexels-yogendra-singh-1701202.jpg)
 
-## Hi there 👋 !!!
+## Welcome 🤗
 
-It's Pau, and this is problem number 3 of my course Hands-on RL course.
+This is Pau,
+
+and this is problem number 3 of my course Hands-on RL course.
 
 In today's lecture we enter new territory...
 
@@ -22,7 +24,7 @@ And this is how Deep RL is born.
 
 We will solve the Cart Pole environment of OpenAI using **parametric Q-learning**.
 
-Today's lesson is split into 3 parts:
+Today's lesson is split into 3 parts.
 
 👉 [Parametric Q-learning](http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning/)  
 👉 [Deep Q learning](http://datamachines.xyz/2022/02/11/hands-on-reinforcement-learning-course-part-5-deep-q-learning/)  
@@ -61,7 +63,7 @@ The easiest way to get the code working in your machine is by using [Poetry](htt
 
 All `python` commands are executed froms this virtual environment created by poetry.
 
-### 2. Notebooks
+## Notebooks
 
 Parametric Q-learning
 - [Explore the environment](notebooks/00_environment.ipynb)

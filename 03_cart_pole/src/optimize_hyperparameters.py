@@ -44,10 +44,8 @@ def sample_hyper_parameters(
         nn_hidden_layers = None
     else:
         # neural network hidden layers
-        # nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", ["None", "[64, 64]", "[256, 256]"])
-        # TODO: added to speed up iterations.
-        nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", [[256, 256]])
-        # nn_hidden_layers = {"None": None, "[64, 64]": [64, 64], "[256, 256]": [256, 256]}[nn_hidden_layers]
+        # nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", [None, [64, 64], [256, 256]])
+        nn_hidden_layers = trial.suggest_categorical("nn_hidden_layers", [[256, 256]]) # ;-)
 
     # how large do we let the gradients grow before capping them?
     # Explosive gradients can be an issue and this hyper-parameters helps mitigate it.
