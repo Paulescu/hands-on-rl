@@ -3,6 +3,7 @@ logs/
 snake/
 **/.ipynb_checkpoints/
 **/__pycache__/
-**/saved_agents/
 **/tensorboard_logs/sml/
+02_mountain_car/saved_agents
+03_cart_pole/saved_agents
 04_cart_pole_tune_hparams_like_a_pro/
