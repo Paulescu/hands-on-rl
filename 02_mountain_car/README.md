@@ -26,9 +26,9 @@ The easiest way to get the code working in your machine is by using [Poetry](htt
     $ git clone https://github.com/Paulescu/hands-on-rl.git 
     ```
 
-3. Navigate to this lesson code `01_taxi`
+3. Navigate to this lesson code `02_mountain_car`
     ```bash
-    $ cd hands-on-rl/01_taxi
+    $ cd hands-on-rl/02_mountain_car
     ```
 
 4. Install all dependencies from `pyproject.toml:
@@ -36,9 +36,15 @@ The easiest way to get the code working in your machine is by using [Poetry](htt
     $ poetry install
     ```
 
-5. and activate the virtual environment
+5. Activate the virtual environment
     ```bash
     $ poetry shell
+    ```
+
+6. Set PYTHONPATH and launch jupyter
+    ```bash
+    $ export PYTHONPATH=".."
+    $ jupyter-lab
     ```
 
 ### Notebooks
