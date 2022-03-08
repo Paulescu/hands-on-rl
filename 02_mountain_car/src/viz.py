@@ -49,16 +49,35 @@ def plot_policy(agent, positions: np.arange, velocities: np.arange, figsize = No
     plt.show()
     return data
 
-def show_video(agent, env, sleep_sec: float = 0.1):
+def show_video(agent, env, sleep_sec: float = 0.1, mode: str = "rgb_array"):
 
     state = env.reset()
     done = False
+
+    # LAPADULA
+    if mode == "rgb_array":
+        from matplotlib import pyplot as plt
+        from IPython.display import display, clear_output
+        steps = 0
+        fig, ax = plt.subplots(figsize=(8, 6))
+
     while not done:
 
         action = agent.get_action(state)
         state, reward, done, info = env.step(action)
-        env.render()
-        sleep(sleep_sec)
+        # LAPADULA
+        if mode == "rgb_array":
+            steps += 1
+            frame = env.render(mode=mode)
+            ax.cla()
+            ax.axes.yaxis.set_visible(False)
+            ax.imshow(frame, extent=[env.min_position, env.max_position, 0, 1])
+            ax.set_title(f'Steps: {steps}')
+            display(fig)
+            clear_output(wait=True)
+            plt.pause(sleep_sec)
+        else:
+            env.render()
 
 
 if __name__ == '__main__':

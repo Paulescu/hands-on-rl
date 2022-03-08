@@ -11,17 +11,38 @@ from src.config import SAVED_AGENTS_DIR
 import numpy as np
 
 
-def show_video(agent, env, sleep_sec: float = 0.1, seed: Optional[int] = 0):
+def show_video(agent, env, sleep_sec: float = 0.1, seed: Optional[int] = 0, mode: str = "rgb_array"):
 
     env.seed(seed)
     state = env.reset()
+
+    # LAPADULA
+    if mode == "rgb_array":
+        from matplotlib import pyplot as plt
+        from IPython.display import display, clear_output
+        steps = 0
+        fig, ax = plt.subplots(figsize=(8, 6))
+
     done = False
     while not done:
 
         action = agent.act(state, epsilon=0.001)
         state, reward, done, info = env.step(action)
-        env.render()
-        sleep(sleep_sec)
+
+        # LAPADULA
+        if mode == "rgb_array":
+            steps += 1
+            frame = env.render(mode=mode)
+            ax.cla()
+            ax.axes.yaxis.set_visible(False)
+            ax.imshow(frame)
+            ax.set_title(f'Steps: {steps}')
+            display(fig)
+            clear_output(wait=True)
+            plt.pause(sleep_sec)
+        else:
+            env.render()
+            sleep(sleep_sec)
 
 
 if __name__ == '__main__':

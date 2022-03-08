@@ -56,9 +56,15 @@ The easiest way to get the code working in your machine is by using [Poetry](htt
     $ poetry install
     ```
 
-5. and activate the virtual environment
+5. Activate the virtual environment
     ```bash
     $ poetry shell
+    ```
+
+6. Set PYTHONPATH and launch jupyter (jupyter-lab param may fix launch problems on some systems)
+    ```bash
+    $ export PYTHONPATH=".."
+    $ jupyter-lab --NotebookApp.use_redirect_file=False
     ```
 
 All `python` commands are executed froms this virtual environment created by poetry.

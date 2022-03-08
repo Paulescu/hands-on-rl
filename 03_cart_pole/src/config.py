@@ -14,5 +14,8 @@ if not SAVED_AGENTS_DIR.exists():
 if not TENSORBOARD_LOG_DIR.exists():
     os.makedirs(TENSORBOARD_LOG_DIR)
 
+if not DATA_SUPERVISED_ML.exists():
+    os.makedirs(DATA_SUPERVISED_ML)
+
 if not MLFLOW_RUNS_DIR.exists():
     os.makedirs(MLFLOW_RUNS_DIR)
