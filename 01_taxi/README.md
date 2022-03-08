@@ -7,43 +7,42 @@ This is part 1 of my course Hands-on reinforcement learning.
 
 In this part we use Q-learning to teach an agent to drive a taxi.
 
-### Quick setup
+## Quick setup
 
-The easiest way to get the code working in your machine is by using [Poetry](https://python-poetry.org/docs/#installation).
+Make sure you have Python >= 3.7. Otherwise, update it.
 
-
-1. You can install Poetry with this one-liner:
-    ```bash
-    $ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+1. Pull the code from GitHub and cd into the `01_taxi` folder:
     ```
-
-2. Git clone the code
-    ```bash
-    $ git clone https://github.com/Paulescu/hands-on-rl.git 
-    ```
-
-3. Navigate to this lesson code `01_taxi`
-    ```bash
+    $ git clone https://github.com/Paulescu/hands-on-rl.git
     $ cd hands-on-rl/01_taxi
     ```
 
-4. Install all dependencies from `pyproject.toml:
-    ```bash
-    $ poetry install
+2. Create a virtual environment and activate it.
+    ```
+    $ virtualenv -p python3 venv
+    $ source venv/bin/activate
     ```
 
-5. Activate the virtual environment
-    ```bash
-    $ poetry shell
+    From this point onwards commands run inside the  virtual environment.
+
+
+3. Install dependencies and code from `src` folder (in editable mode `-e`, so you can experiment with the code)
+    ```
+    $ (venv) pip install -e .
     ```
 
-6. Set PYTHONPATH and launch jupyter (jupyter-lab param may fix launch problems on some systems)
-    ```bash
-    $ export PYTHONPATH=".."
-    $ jupyter-lab --NotebookApp.use_redirect_file=False
+4. Open the notebooks, either with good old Jupyter
+    ```
+    $ (venv) jupyter notebook
+    ```
+    or Jupyterlab
+    ```
+    $ (venv) jupyter lab
     ```
 
-### Notebooks
+5. Play and learn. And do the homework 😉.
+
+## Notebooks
 
 1. [Explore the environment](notebooks/00_environment.ipynb)
 2. [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
