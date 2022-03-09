@@ -1,11 +1,8 @@
 <div align="center">
-<h1>Parametric Q learning to keep the balance</h1>
-<h2>Let's (perfectly) solve the CartPole</h2>
+<h1>Parametric Q learning to solve the Cart Pole</h1>
+<h3><i>There exists everywhere a medium in things, determined by equilibrium.</i></h3>
+<h4>-- Dmitri Mendeleev</h4>
 </div>
-
-> *There exists everywhere a medium in things, determined by equilibrium.*
->
-> --_Dmitri Mendeleev_
 
 ![](http://datamachines.xyz/wp-content/uploads/2022/01/pexels-yogendra-singh-1701202.jpg)
 

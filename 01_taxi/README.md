@@ -1,11 +1,25 @@
-# Q-learning to drive a taxi 🚕
-> *You talkin' to me?*
->
-> Robert de Niro (Taxi driver)
+<div align="center">
+<h1>Q-learning to drive a taxi 🚕</h1>
+<h3><i>You talkin' to me?</i></h3>
+<h4>-- Robert de Niro (Taxi driver)</h4>
+</div>
 
+![](http://datamachines.xyz/wp-content/uploads/2021/11/pexels-helena-jankovic%CC%8Cova%CC%81-kova%CC%81c%CC%8Cova%CC%81-5870314.jpg)
+
+## Table of Contents
+* [Welcome 🤗](#welcome-)
+* [Quick setup](#quick-setup)
+* [Lecture transcripts](#lecture-transcripts)
+* [Notebooks](#notebooks)
+* [Let's connect](#lets-connect)
+
+## Welcome 🤗
 This is part 1 of my course Hands-on reinforcement learning.
 
-In this part we use Q-learning to teach an agent to drive a taxi.
+In this part we use (tabular) Q-learning to teach an agent to drive a taxi.
+
+Fasten your seat belt and get ready. We are ready to depart!
+
 
 ## Quick setup
 
@@ -42,13 +56,27 @@ Make sure you have Python >= 3.7. Otherwise, update it.
 
 5. Play and learn. And do the homework 😉.
 
+
+## Lectures transcripts
+
+[📝 Q learning](http://datamachines.xyz/2021/12/06/hands-on-reinforcement-learning-course-part-2-q-learning/)  
+
+
 ## Notebooks
 
-1. [Explore the environment](notebooks/00_environment.ipynb)
-2. [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
-3. [Q-agent](notebooks/02_q_agent.ipynb)
-4. [Hyper-parameter tuning](notebooks/03_q_agent_hyperparameters_analysis.ipynb)
-5. [Homework](notebooks/04_homework.ipynb)
+- [Explore the environment](notebooks/00_environment.ipynb)
+- [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
+- [Q-agent](notebooks/02_q_agent.ipynb)
+- [Hyperparameter tuning](notebooks/03_q_agent_hyperparameters_analysis.ipynb)
+- [Homework](notebooks/04_homework.ipynb)
+
+## Let's connect!
+
+Do you wanna become a PRO in Machine Learning?
+
+👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/).
+
+👉🏽 Follow me on [Medium](https://pau-labarta-bajo.medium.com/).
 
 
 
