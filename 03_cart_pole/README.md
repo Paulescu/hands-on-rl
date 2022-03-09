@@ -1,19 +1,19 @@
 <div align="center">
-<h1>Parametric Q learning to keep the balance</h1>
-<h2>Let's (perfectly) solve the CartPole</h2>
+<h1>Parametric Q learning to solve the Cart Pole</h1>
+<h3><i>There exists everywhere a medium in things, determined by equilibrium.</i></h3>
+<h4>-- Dmitri Mendeleev</h4>
 </div>
-
-> *There exists everywhere a medium in things, determined by equilibrium.*
->
-> --_Dmitri Mendeleev_
 
 ![](http://datamachines.xyz/wp-content/uploads/2022/01/pexels-yogendra-singh-1701202.jpg)
 
+## Table of Contents
+* [Welcome 🤗](#welcome-)
+* [Quick setup](#quick-setup)
+* [Lecture transcripts](#lecture-transcripts)
+* [Notebooks](#notebooks)
+* [Let's connect](#lets-connect)
+
 ## Welcome 🤗
-
-This is Pau,
-
-and this is problem number 3 of my course Hands-on RL course.
 
 In today's lecture we enter new territory...
 
@@ -26,48 +26,46 @@ We will solve the Cart Pole environment of OpenAI using **parametric Q-learning*
 
 Today's lesson is split into 3 parts.
 
-👉 <a href="http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning/" target="_blank">Parametric Q learning</a>  
-👉 [Deep Q learning](http://datamachines.xyz/2022/02/11/hands-on-reinforcement-learning-course-part-5-deep-q-learning/)  
-👉 [Hyperparameter search]()
+## Lectures transcripts
 
+[📝 1. Parametric Q learning](http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning)  
+[📝 2. Deep Q learning](http://datamachines.xyz/2022/02/11/hands-on-reinforcement-learning-course-part-5-deep-q-learning/)  
+[📝 3. Hyperparameter search](http://datamachines.xyz/2022/03/03/hyperparameters-in-deep-rl-hands-on-course/)
 
 ## Quick setup
 
-The easiest way to get the code working in your machine is by using [Poetry](https://python-poetry.org/docs/#installation).
+Make sure you have Python >= 3.7. Otherwise, update it.
 
-
-1. You can install Poetry with this one-liner:
-    ```bash
-    $ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+1. Pull the code from GitHub and cd into the `03_cart_pole` folder:
+    ```
+    $ git clone https://github.com/Paulescu/hands-on-rl.git
+    $ cd hands-on-rl/01_taxi
     ```
 
-2. Git clone the code
-    ```bash
-    $ git clone https://github.com/Paulescu/hands-on-rl.git 
+2. Create a virtual environment and activate it.
+    ```
+    $ virtualenv -p python3 venv
+    $ source venv/bin/activate
     ```
 
-3. Navigate to this lesson code `03_cart_pole`
-    ```bash
-    $ cd hands-on-rl/03_cart_pole
+    From this point onwards commands run inside the  virtual environment.
+
+
+3. Install dependencies and code from `src` folder (in editable mode `-e`, so you can experiment with the code)
+    ```
+    $ (venv) pip install -e .
     ```
 
-4. Install all dependencies:
-    ```bash
-    $ poetry install
+4. Open the notebooks, either with good old Jupyter
+    ```
+    $ (venv) jupyter notebook
+    ```
+   or Jupyterlab
+    ```
+    $ (venv) jupyter lab
     ```
 
-5. Activate the virtual environment
-    ```bash
-    $ poetry shell
-    ```
-
-6. Set PYTHONPATH and launch jupyter (jupyter-lab param may fix launch problems on some systems)
-    ```bash
-    $ export PYTHONPATH=".."
-    $ jupyter-lab --NotebookApp.use_redirect_file=False
-    ```
-
-All `python` commands are executed froms this virtual environment created by poetry.
+5. Play and learn. And do the homework 😉.
 
 ## Notebooks
 
@@ -87,3 +85,11 @@ Deep Q-learning
 Hyperparameter search
 - [Hyperparameter search](notebooks/09_hyperparameter_search.ipynb)
 - [Homework](notebooks/10_homework.ipynb)
+
+## Let's connect!
+
+Do you wanna become a PRO in Machine Learning?
+
+👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/).
+
+👉🏽 Follow me on [Medium](https://pau-labarta-bajo.medium.com/).
