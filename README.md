@@ -42,3 +42,9 @@ and pull requests.
 
 - [Neria Uzan](https://www.linkedin.com/in/neria-uzan-369803107/)
 - [Anthony Lapadula](https://www.linkedin.com/in/anthony-lapadula-9343a5b/)
+
+## Wanna get updates on the course?
+
+👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/).
+
+👉🏽 Follow me on [Medium](https://pau-labarta-bajo.medium.com/).
