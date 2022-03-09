@@ -4,7 +4,10 @@
 <h4>-- Robert de Niro (Taxi driver)</h4>
 </div>
 
-![](http://datamachines.xyz/wp-content/uploads/2021/11/pexels-helena-jankovic%CC%8Cova%CC%81-kova%CC%81c%CC%8Cova%CC%81-5870314.jpg)
+<figure>
+<img src="http://datamachines.xyz/wp-content/uploads/2021/11/pexels-helena-jankovic%CC%8Cova%CC%81-kova%CC%81c%CC%8Cova%CC%81-5870314.jpg" style="width:100%">
+<figcaption align = "center">Venice’s taxis 👆 by <a href="https://www.pexels.com/@helen1?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels">Helena Jankovičová Kováčová</a> from Pexels 🙏</figcaption>
+</figure>
 
 ## Table of Contents
 * [Welcome 🤗](#welcome-)
@@ -14,9 +17,10 @@
 * [Let's connect](#lets-connect)
 
 ## Welcome 🤗
-This is part 1 of my course Hands-on reinforcement learning.
+This is part 1 of the Hands-on RL course.
 
-In this part we use (tabular) Q-learning to teach an agent to drive a taxi.
+Let's use (tabular) Q-learning to teach an agent to solve the [Taxi-v3](https://gym.openai.com/envs/Taxi-v3/) environment
+from OpenAI gym.
 
 Fasten your seat belt and get ready. We are ready to depart!
 
