@@ -9,7 +9,14 @@
 
 ![](http://datamachines.xyz/wp-content/uploads/2022/01/pexels-yogendra-singh-1701202.jpg)
 
-## Welcome back 🤗!
+## Table of Contents
+* [Welcome 🤗](#welcome-)
+* [Quick setup](#quick-setup)
+* [Lecture transcripts](#lecture-transcripts)
+* [Notebooks](#notebooks)
+* [Let's connect](#lets-connect)
+
+## Welcome 🤗
 
 In today's lecture we enter new territory...
 
@@ -22,9 +29,11 @@ We will solve the Cart Pole environment of OpenAI using **parametric Q-learning*
 
 Today's lesson is split into 3 parts.
 
-👉 <a href="http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning/" target="_blank">Parametric Q learning</a>  
-👉 [Deep Q learning](http://datamachines.xyz/2022/02/11/hands-on-reinforcement-learning-course-part-5-deep-q-learning/)  
-👉 [Hyperparameter search](http://datamachines.xyz/2022/03/03/hyperparameters-in-deep-rl-hands-on-course/)
+## Lectures transcripts
+
+[📝 1. Parametric Q learning](http://datamachines.xyz/2022/01/18/hands-on-reinforcement-learning-course-part-4-parametric-q-learning)  
+[📝 2. Deep Q learning](http://datamachines.xyz/2022/02/11/hands-on-reinforcement-learning-course-part-5-deep-q-learning/)  
+[📝 3. Hyperparameter search](http://datamachines.xyz/2022/03/03/hyperparameters-in-deep-rl-hands-on-course/)
 
 ## Quick setup
 
@@ -79,3 +88,11 @@ Deep Q-learning
 Hyperparameter search
 - [Hyperparameter search](notebooks/09_hyperparameter_search.ipynb)
 - [Homework](notebooks/10_homework.ipynb)
+
+## Let's connect!
+
+Do you wanna become a PRO in Machine Learning?
+
+👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/).
+
+👉🏽 Follow me on [Medium](https://pau-labarta-bajo.medium.com/).
