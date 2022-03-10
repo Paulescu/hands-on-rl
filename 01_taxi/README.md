@@ -35,18 +35,28 @@ Make sure you have Python >= 3.7. Otherwise, update it.
     $ cd hands-on-rl/01_taxi
     ```
 
-2. Create a virtual environment and activate it.
+2. Make sure you have the `virtualenv` tool in your Python installation
+    ```
+   $ pip3 install virtualenv
+   ```
+   
+3. Create a virtual environment and activate it.
     ```
     $ virtualenv -p python3 venv
     $ source venv/bin/activate
     ```
-
+ 
     From this point onwards commands run inside the  virtual environment.
 
 
 3. Install dependencies and code from `src` folder (in editable mode `-e`, so you can experiment with the code)
     ```
     $ (venv) pip install -e .
+    ```
+    If you get a `File setup.up error` at this stage try this: 
+    ```
+    $ pip install -r requirements.txt
+    $ export PYTHONPATH=$PYTHONPATH:$(pwd)
     ```
 
 4. Open the notebooks, either with good old Jupyter
@@ -55,7 +65,7 @@ Make sure you have Python >= 3.7. Otherwise, update it.
     ```
     or Jupyterlab
     ```
-    $ (venv) jupyter lab
+    $ (venv) jupyter lab --NotebookApp.use_redirect_file=False
     ```
 
 5. Play and learn. And do the homework 😉.
