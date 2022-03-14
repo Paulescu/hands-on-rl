@@ -49,21 +49,22 @@ Make sure you have Python >= 3.7. Otherwise, update it.
     From this point onwards commands run inside the  virtual environment.
 
 
-3. Install dependencies and code from `src` folder (in editable mode `-e`, so you can experiment with the code)
+3. Install dependencies and code from `src` folder in editable mode, so you can experiment with the code.
     ```
-    $ (venv) pip install -e .
-    ```
-    If you get a `File setup.up error` at this stage try this: 
-    ```
-    $ pip install -r requirements.txt
-    $ export PYTHONPATH=$PYTHONPATH:$(pwd)
+    $ (venv) python setup.py develop
     ```
 
-4. Open the notebooks, either with good old Jupyter
+4. Open the notebooks, either with good old Jupyter or Jupyter lab
     ```
     $ (venv) jupyter notebook
     ```
-    or Jupyterlab
+    ```
+    $ (venv) jupyter lab
+    ```
+    If both launch commands fail, try these:
+    ```
+    $ (venv) jupyter notebook --NotebookApp.use_redirect_file=False
+    ```
     ```
     $ (venv) jupyter lab --NotebookApp.use_redirect_file=False
     ```
