@@ -52,7 +52,7 @@ Make sure you have Python >= 3.7. Otherwise, update it.
 3. Install dependencies and code from `src` folder in editable mode, so you can experiment with the code.
     ```
     $ (venv) pip install -r requirements.txt
-    $ (venv)export PYTHONPATH="."
+    $ (venv) export PYTHONPATH="."
     ```
 
 4. Open the notebooks, either with good old Jupyter or Jupyter lab
