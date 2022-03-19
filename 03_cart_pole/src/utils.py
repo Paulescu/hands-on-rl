@@ -35,8 +35,10 @@ def get_agent_id(env_name: str) -> str:
             ids.append(int(id))
         except:
             pass
-    agent_id = max(ids) + 1
-
+    if len(ids) > 0:
+        agent_id = max(ids) + 1
+    else:
+        agent_id = 0
     # stop()
 
     return str(agent_id)
