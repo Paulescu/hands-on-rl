@@ -73,7 +73,7 @@ Make sure you have Python >= 3.7. Otherwise, update it.
 5. Play and learn. And do the homework 😉.
 
 
-## Lectures transcripts
+## Lecture transcripts
 
 [📝 Q learning](http://datamachines.xyz/2021/12/06/hands-on-reinforcement-learning-course-part-2-q-learning/)  
 
