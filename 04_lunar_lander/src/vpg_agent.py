@@ -75,8 +75,8 @@ class VPGAgent:
 
     def train(
         self,
-        epochs: int = 1000,
-        steps_per_epoch: int = 4000,
+        n_policy_updates: int = 1000,
+        batch_size: int = 4000,
         logger: Optional[SummaryWriter] = None,
         model_path: Optional[Path] = None,
         seed: Optional[int] = 0,
@@ -86,15 +86,16 @@ class VPGAgent:
         """
         total_steps = 0
         save_model = True if model_path is not None else False
+
         best_avg_reward = -np.inf
 
         # fix seeds to ensure reproducible training runs
         set_seed(self.env, seed)
 
-        for i in range(epochs):
+        for i in range(n_policy_updates):
 
             # use current policy to collect trajectories
-            states, actions, weights, rewards = self._collect_trajectories(n_samples=steps_per_epoch)
+            states, actions, weights, rewards = self._collect_trajectories(n_samples=batch_size)
 
             # one step of gradient ascent to update policy parameters
             loss = self._update_parameters(states, actions, weights)
@@ -104,18 +105,20 @@ class VPGAgent:
             if logger is not None:
                 # we use total_steps instead of epoch to render all plots in Tensorboard comparable
                 # Agents wit different batch_size (aka steps_per_epoch) are fairly compared this way.
-                total_steps += steps_per_epoch
+                total_steps += batch_size
                 logger.add_scalar('train/loss', loss, total_steps)
                 logger.add_scalar('train/episode_reward', np.mean(rewards), total_steps)
 
             # evaluate the agent on a fixed set of 100 episodes
             if (i + 1) % freq_eval_in_epochs == 0:
-                rewards, steps = self.evaluate(n_episodes=100)
+                rewards, success = self.evaluate(n_episodes=100)
 
                 avg_reward = np.mean(rewards)
+                avg_success_rate = np.mean(success)
                 if save_model and (avg_reward > best_avg_reward):
                     self.save_to_disk(model_path)
-                    print(f'Best model! Average reward = {avg_reward:.2f}')
+                    print(f'Best model! Average reward = {avg_reward:.2f}, Success rate = {avg_success_rate:.2%}')
+
                     best_avg_reward = avg_reward
 
     def evaluate(self, n_episodes: Optional[int] = 100, seed: Optional[int] = 1234) -> Tuple[List[float], List[float]]:
@@ -123,7 +126,7 @@ class VPGAgent:
         """
         # output metrics
         reward_per_episode = []
-        steps_per_episode = []
+        success_per_episode = []
 
         # fix seed
         self.env.seed(seed)
@@ -135,6 +138,7 @@ class VPGAgent:
             rewards = 0
             steps = 0
             done = False
+            reward = None
             while not done:
 
                 action = self.act(torch.as_tensor(state, dtype=torch.float32))
@@ -146,9 +150,9 @@ class VPGAgent:
                 state = next_state
 
             reward_per_episode.append(rewards)
-            steps_per_episode.append(steps)
+            success_per_episode.append(1 if reward > 0 else 0)
 
-        return reward_per_episode, steps_per_episode
+        return reward_per_episode, success_per_episode
 
     def _collect_trajectories(self, n_samples: int):
 
