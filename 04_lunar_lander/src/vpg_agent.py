@@ -80,7 +80,7 @@ class VPGAgent:
         logger: Optional[SummaryWriter] = None,
         model_path: Optional[Path] = None,
         seed: Optional[int] = 0,
-        freq_eval_in_epochs: Optional[int] = 10,
+        freq_eval: Optional[int] = 10,
     ):
         """
         """
@@ -110,7 +110,7 @@ class VPGAgent:
                 logger.add_scalar('train/episode_reward', np.mean(rewards), total_steps)
 
             # evaluate the agent on a fixed set of 100 episodes
-            if (i + 1) % freq_eval_in_epochs == 0:
+            if (i + 1) % freq_eval == 0:
                 rewards, success = self.evaluate(n_episodes=100)
 
                 avg_reward = np.mean(rewards)
@@ -136,7 +136,6 @@ class VPGAgent:
 
             state = self.env.reset()
             rewards = 0
-            steps = 0
             done = False
             reward = None
             while not done:
@@ -144,9 +143,8 @@ class VPGAgent:
                 action = self.act(torch.as_tensor(state, dtype=torch.float32))
 
                 next_state, reward, done, info = self.env.step(action)
-
                 rewards += reward
-                steps += 1
+
                 state = next_state
 
             reward_per_episode.append(rewards)
@@ -277,11 +275,12 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('--env', type=str, default='CartPole-v0')
+    parser.add_argument('--n_policy_updates', type=int, default=1000)
+    parser.add_argument('--batch_size', type=int, default=128)
     parser.add_argument('--gradient_weights', type=str, default='rewards')
     parser.add_argument('--lr', type=float, default=3e-4)
     parser.add_argument("--hidden_layers", type=int, nargs="+",)
-    parser.add_argument('--epochs', type=int, default=50)
-    parser.add_argument('--steps_per_epoch', type=int, default=4000)
+    parser.add_argument("--freq_eval", type=int)
     args = parser.parse_args()
 
     vpg_agent = VPGAgent(
@@ -294,10 +293,9 @@ if __name__ == '__main__':
     # generate a unique agent_id, that we later use to save results to disk, as
     # well as TensorBoard logs.
     agent_id = get_agent_id(args.env)
+    print(f'agent_id = {agent_id}')
 
     # tensorboard logger to see training curves
-    # log_dir = TENSORBOARD_LOG_DIR / args.env / agent_id
-    # logger = SummaryWriter(log_dir)
     logger = get_logger(env_name=args.env, agent_id=agent_id)
 
     # path to save policy network weights
@@ -305,8 +303,9 @@ if __name__ == '__main__':
 
     # start training
     vpg_agent.train(
-        epochs=args.epochs,
-        steps_per_epoch=args.steps_per_epoch,
+        n_policy_updates=args.n_policy_updates,
+        batch_size=args.batch_size,
         logger=logger,
         model_path=model_path,
+        freq_eval=args.freq_eval,
     )
