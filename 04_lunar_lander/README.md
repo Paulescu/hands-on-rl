@@ -1,57 +1,87 @@
-# todos
+<div align="center">
+<h1>Policy Gradients to land on the Moon</h1>
+<h3><i>“That's one small step for your gradient ascent, one giant leap for your ML career.”</i></h3>
+<h4>-- Pau quoting Neil Armstrong</h4>
+</div>
 
-- [x] Make spinup implementation run without MPI.
-- [x] Policy gradients with generalized advantage estimation.
+![](http://datamachines.xyz/wp-content/uploads/2022/05/jagoda_and_kai-2048x1536.jpg)
 
-- [x] implement working code with the most vanilla PG method that exists.
-- [x] train optimal agent
+## Table of Contents
+* [Welcome 🤗](#welcome-)
+* [Lecture transcripts](#lecture-transcripts)
+* [Quick setup](#quick-setup)
+* [Notebooks](#notebooks)
+* [Let's connect](#lets-connect)
 
-- [x] re-run training.
-- [x] evaluate solution and check it works like a charm.
+## Welcome 🤗
 
-- [x] Generate video best agent.
-- [x] Notebook: Actions, states, rewards
+Today we will learn about Policy Gradient methods, and use them to land on the Moon.
 
-- [x] random agent notebook
+Ready, set, go!
 
-- [x] vpg v1 training notebook
-- [x] vpg v2 training notebook
+## Lecture transcripts
 
-- [x] blog section vpg v1
+[📝 1. Policy gradients](http://datamachines.xyz/2022/05/06/policy-gradients-in-reinforcement-learning-to-land-on-the-moon-hands-on-course/)  
 
-- [x] Add success rate.
+## Quick setup
 
-- [ ] blog section vpg v2
-- [ ] key-takeaways
-- [ ] Homework
-- [ ] Policy gradients theory
-- [ ] Polish readme and commit it to git
+Make sure you have Python >= 3.7. Otherwise, update it.
 
-## equations
-J(\theta) =
-Q^*(s, a=1) = p_{10} * x + p_{11} * v + p_{12} * \theta + p_{13} * \omega + p_{14}
-\tau = (s_0, a_0, s_1, a_1... s_T, a_T)
+1. Pull the code from GitHub and cd into the `04_lunar_lander` folder:
+    ```
+    $ git clone https://github.com/Paulescu/hands-on-rl.git
+    $ cd hands-on-rl/04_lunar_lander
+    ```
 
-J(\theta) = E_{\tau \sim \pi_{\theta}}R(\tau)
-\max_{\theta}J(\theta)
-J(\theta_0) < J(\theta_1)
-\theta_0 \rightarrow \theta_1
-\theta_0 + \alpha * \nabla J(\theta_0) = \theta_1
-\theta_0 \rightarrow \theta_1 \rightarrow \theta_2 \rightarrow ...  \theta_N
+2. Make sure you have the `virtualenv` tool in your Python installation
+    ```
+   $ pip3 install virtualenv
+   ```
 
-J(\theta_0) < J(\theta_1) < J(\theta_2) < ... < J(\theta_N)
+3. Create a virtual environment and activate it.
+    ```
+    $ virtualenv -p python3 venv
+    $ source venv/bin/activate
+    ```
 
-\nabla J(\theta) = \frac{1}{m} \sum_{i=1}^{m}
-
-\pi_{\theta}
-
-\nabla J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \sum_{t=0}^{T} \nabla{\log{\pi_{\theta}(a_t | s_t)}} * R(\tau_i)
-\tau = (s_0, a_0, s_1, a_1... s_T, a_T)
-
-\text{reward-to-go}(t) = \sum_{t'=t}^{T} r_{t'}
-
-# references
+   From this point onwards commands run inside the  virtual environment.
 
 
+3. Install dependencies and code from `src` folder in editable mode, so you can experiment with the code.
+    ```
+    $ (venv) pip install -r requirements.txt
+    $ (venv) export PYTHONPATH="."
+    ```
 
+4. Open the notebooks, either with good old Jupyter or Jupyter lab
+    ```
+    $ (venv) jupyter notebook
+    ```
+    ```
+    $ (venv) jupyter lab
+    ```
+   If both launch commands fail, try these:
+    ```
+    $ (venv) jupyter notebook --NotebookApp.use_redirect_file=False
+    ```
+    ```
+    $ (venv) jupyter lab --NotebookApp.use_redirect_file=False
+    ```
 
+5. Play and learn. And do the homework 😉.
+
+## Notebooks
+
+Parametric Q-learning
+- [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
+- [Policy gradients with rewards as weights](notebooks/02_vanilla_policy_gradient_with_rewards_as_weights.ipynb)
+- [Policy gradients with rewards-to-go as weights](notebooks/03_vanilla_policy_gradient_with_rewards_to_go_as_weights.ipynb)
+- [Homework](notebooks/04_homework.ipynb)
+
+## Let's connect!
+
+Do you wanna become a PRO in Machine Learning?
+
+👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/).
+
+👉🏽 Follow me on [Medium](https://pau-labarta-bajo.medium.com/).
