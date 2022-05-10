@@ -9,12 +9,12 @@
 
 ## Contents
 
-* [Welcome](#welcome-)
+* [Welcome to the course](#welcome-to-the-course-)
 * [Lectures](#lectures)
 * [Wanna contribute?](#wanna-contribute)
 * [Let's connect!](#lets-connect)
 
-## Welcome 🤗❤️
+## Welcome to the course 🤗❤️
 
 Welcome to my step by step hands-on-course that will take you from basic reinforcement learning to cutting-edge deep RL.
 
