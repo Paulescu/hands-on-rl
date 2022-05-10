@@ -7,7 +7,7 @@ class MomentumAgent(BaseAgent):
 
         self.valley_position = -0.5
 
-    def get_action(self, state) -> int:
+    def get_action(self, state, epsilon=None) -> int:
         """
         No input arguments to this function.
         The agent does not consider the state of the environment when deciding
@@ -24,6 +24,6 @@ class MomentumAgent(BaseAgent):
 
         return action
 
-    def update_parameters(self, state, action, reward, next_state):
+    def update_parameters(self, state, action, reward, next_state, epsilon):
         pass
 

@@ -8,7 +8,7 @@ class RandomAgent(BaseAgent):
     def __init__(self, env):
         self.env = env
 
-    def get_action(self, state) -> int:
+    def get_action(self, state, epsilon) -> int:
         """
         No input arguments to this function.
         The agent does not consider the state of the environment when deciding
@@ -16,6 +16,6 @@ class RandomAgent(BaseAgent):
         """
         return self.env.action_space.sample()
 
-    def update_parameters(self, state, action, reward, next_state):
+    def update_parameters(self, state, action, reward, next_state, epsilon):
         pass
 
