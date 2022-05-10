@@ -41,7 +41,7 @@ how it becomes a crucial ingredient in modern reinforcement learning.
 3. [Parametric Q learning to keep the balance 💃 🏆](03_cart_pole/README.md)
 4. [Policy gradients to land on the Moon 🏆](04_lunar_lander/README.md)
 
-## Wanna contribute?️
+## Wanna contribute?
 
 There are 2 things you can do to contribute to this course:
 
