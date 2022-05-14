@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 from src.base_agent import BaseAgent
 
@@ -33,16 +34,23 @@ class SarsaAgent(BaseAgent):
         state_discrete = (state - min_states) * np.array([10, 100])
         return np.round(state_discrete, 0).astype(int)
 
-    def get_action(self, state):
+    def get_action(self, state, epsilon=None):
         """"""
-        state_discrete = self._discretize_state(state)
-        return np.argmax(self.q_table[state_discrete[0], state_discrete[1]])
+        if epsilon and random.uniform(0, 1) < epsilon:
+            # Explore action space
+            action = self.env.action_space.sample()
+        else:
+            # Exploit learned values
+            state_discrete = self._discretize_state(state)
+            action = np.argmax(self.q_table[state_discrete[0], state_discrete[1]])
+        
+        return action
 
-    def update_parameters(self, state, action, reward, next_state):
+    def update_parameters(self, state, action, reward, next_state, epsilon):
         """"""
         s = self._discretize_state(state)
         ns = self._discretize_state(next_state)
-        na = self.get_action(next_state)
+        na = self.get_action(next_state, epsilon)
 
         delta = self.alpha * (
                 reward
