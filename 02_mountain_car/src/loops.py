@@ -32,16 +32,11 @@ def train(
         done = False
         while not done:
 
-            if random.uniform(0, 1) < epsilon_:
-                # Explore action space
-                action = env.action_space.sample()
-            else:
-                # Exploit learned values
-                action = agent.get_action(state)
+            action = agent.get_action(state, epsilon_)
 
             next_state, reward, done, info = env.step(action)
 
-            agent.update_parameters(state, action, reward, next_state)
+            agent.update_parameters(state, action, reward, next_state, epsilon_)
 
             rewards += reward
             if next_state[0] > max_position:
@@ -59,7 +54,7 @@ def evaluate(
     agent,
     env,
     n_episodes: int,
-    epsilon: Optional[float] = None
+    epsilon: Optional[Union[float, Callable]] = None
 ) -> Tuple[List, List]:
 
     # For plotting metrics
@@ -76,14 +71,14 @@ def evaluate(
         done = False
         while not done:
 
-            if (epsilon is not None) and (random.uniform(0, 1) < epsilon):
-                action = env.action_space.sample()
-            else:
-                action = agent.get_action(state)
+            epsilon_ = None
+            if epsilon is not None:
+                epsilon_ = epsilon if isinstance(epsilon, float) else epsilon(i)
+            action = agent.get_action(state, epsilon_)
 
             next_state, reward, done, info = env.step(action)
 
-            agent.update_parameters(state, action, reward, next_state)
+            agent.update_parameters(state, action, reward, next_state, epsilon_)
 
             rewards += reward
             if next_state[0] > max_position:

@@ -55,6 +55,7 @@ and pull requests ❤
 
 - [Neria Uzan](https://www.linkedin.com/in/neria-uzan-369803107/)
 - [Anthony Lapadula](https://www.linkedin.com/in/anthony-lapadula-9343a5b/)
+- [Petar Sekulić](https://www.linkedin.com/in/petar-sekulic-ml/)
 
 ## Let's connect!
 
