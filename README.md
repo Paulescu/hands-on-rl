@@ -58,6 +58,6 @@ and pull requests ❤
 
 ## Let's connect!
 
-👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/).
+👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/) 🧠
 
-👉🏽 Follow me on [Medium](https://pau-labarta-bajo.medium.com/), [Twitter](https://twitter.com/paulabartabajo_), [LinkedIn](https://www.linkedin.com/in/pau-labarta-bajo-4432074b/)
+👉🏽 Follow me on [Twitter](https://twitter.com/paulabartabajo_) and [LinkedIn](https://www.linkedin.com/in/pau-labarta-bajo-4432074b/) 💡

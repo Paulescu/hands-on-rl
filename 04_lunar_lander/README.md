@@ -72,7 +72,6 @@ Make sure you have Python >= 3.7. Otherwise, update it.
 
 ## Notebooks
 
-Parametric Q-learning
 - [Random agent baseline](notebooks/01_random_agent_baseline.ipynb)
 - [Policy gradients with rewards as weights](notebooks/02_vanilla_policy_gradient_with_rewards_as_weights.ipynb)
 - [Policy gradients with rewards-to-go as weights](notebooks/03_vanilla_policy_gradient_with_rewards_to_go_as_weights.ipynb)
@@ -82,6 +81,6 @@ Parametric Q-learning
 
 Do you wanna become a PRO in Machine Learning?
 
-👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/).
+👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/) 🧠
 
-👉🏽 Follow me on [Medium](https://pau-labarta-bajo.medium.com/).
+👉🏽 Follow me on [Twitter](https://twitter.com/paulabartabajo_) and [LinkedIn](https://www.linkedin.com/in/pau-labarta-bajo-4432074b/) 💡
