@@ -7,6 +7,8 @@
 
 ![](http://datamachines.xyz/wp-content/uploads/2021/11/PHOTO-2021-11-05-13-54-11.jpg)
 
+![Twitter Follow](https://img.shields.io/twitter/follow/paulabartabajo_?label=Follow&style=social)
+
 ## Contents
 
 * [Welcome to the course](#welcome-to-the-course-)
@@ -62,5 +64,3 @@ and pull requests ❤
 👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/) 🧠
 
 👉🏽 Follow me on [Twitter](https://twitter.com/paulabartabajo_) and [LinkedIn](https://www.linkedin.com/in/pau-labarta-bajo-4432074b/) 💡
-
-![Twitter Follow](https://img.shields.io/twitter/follow/paulabartabajo_?label=Follow&style=social)
