@@ -62,3 +62,5 @@ and pull requests ❤
 👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/) 🧠
 
 👉🏽 Follow me on [Twitter](https://twitter.com/paulabartabajo_) and [LinkedIn](https://www.linkedin.com/in/pau-labarta-bajo-4432074b/) 💡
+
+![Twitter Follow](https://img.shields.io/twitter/follow/paulabartabajo_?label=Follow&style=social)
