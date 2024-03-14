@@ -61,6 +61,6 @@ and pull requests ❤
 
 ## Let's connect!
 
-👉🏽 Subscribe to the [datamachines newsletter](https://datamachines.xyz/subscribe/) 🧠
+👉🏽 Subscribe for **FREE** to the [Real-World ML newsletter](https://realworldml.net/subscribe/) 🧠
 
 👉🏽 Follow me on [Twitter](https://twitter.com/paulabartabajo_) and [LinkedIn](https://www.linkedin.com/in/pau-labarta-bajo-4432074b/) 💡
